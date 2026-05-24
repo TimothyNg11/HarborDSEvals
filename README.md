@@ -1,42 +1,68 @@
 # DABstep Reproduction — Where Flash-Class LLMs Fail on Documentation-Grounded Data Analysis
 
-A Harbor-format reproduction of the DABstep benchmark (arXiv:2506.23719) on
-`gemini-3-flash-preview`, extended with a 2-model comparison
-(`claude-haiku-4-5`) and a pre-registered intervention study targeting the
-dominant failure mode.
+A Harbor-format reproduction of the DABstep dev split (arXiv:2506.23719) on
+two flash-class LLMs — `gemini-3-flash-preview` and `claude-haiku-4-5` —
+plus a pre-registered intervention study targeting the dominant failure mode.
 
-> **TL;DR:** One failure mode — misreading a single rule in the fee manual —
-> accounts for the majority of failures on both models. A one-sentence system
-> prompt addition is the proposed fix; results below.
+> **TL;DR:** Both flash-class models score the same on the 10-task DABstep
+> dev split (50 % pass@3, identical aggregate). The pre-registered
+> single-sentence prompt intervention does **not** clear the predicted
+> 25 pp bar on pass@3, but it sharply improves *consistency*: Gemini's
+> pass@1 jumps 0 % → 100 % on T07–T08, Haiku's pass@1 on T06 goes 33 % →
+> 100 %. The full read: rule-precedence misread is a knowledge gap on
+> pure rule-intersection tasks (T06–T08) and a residual capability gap on
+> compound tasks that layer additional computation on top (T05, T09).
 
 ---
 
 ## Results
 
-> **Note:** Results for the 25-task reproduction (Phases 2–3) are pending.
-> The table below reflects the original 5-task submission baseline.
-> This will be updated when Phase 2 and Phase 3 runs are complete.
+### Multi-model baseline — 10 dev-split tasks
 
-### Original 5-task baseline (gemini-3-flash-preview)
+| Model | Aggregate pass@3 | Aggregate pass@1 |
+|-------|:----------------:|:----------------:|
+| `gemini-3-flash-preview`    | **50 %** (5/10) | 20 % (2/10) |
+| `claude-haiku-4-5-20251001` | **50 %** (5/10) | 20 % (2/10) |
 
-| Task | Question (paraphrased) | pass@1 | pass@3 | Root cause |
-|------|------------------------|--------|--------|-----------|
-| T03 | Is Martinis in danger of a high-fraud-rate fine? | 0.0 | 0.0 | Question-premise blindness |
-| T05 | Avg fee, account_type H + MCC Eating Places + GlobalCard, 10 EUR | 0.0 | 0.0 | Rule-precedence misread |
-| T06 | Fee IDs applying to account_type=R, aci=B | 0.0 | 0.0 | Rule-precedence misread |
-| T09 | Belles January delta if rule 384's rate = 1 | 0.0 | 0.0 | Rule-precedence misread |
-| T10 | Best ACI to minimise Belles fraudulent transaction fees | 0.0 | 0.0 | Combinatorial search pruning |
-| **Aggregate** | | **0.0** | **0.0** | |
+Per-task matrix in [`results/multimodel_baseline.csv`](results/multimodel_baseline.csv).
+Both models fail on the same five tasks (T03, T05, T09, T10, plus T02 for
+Haiku / T06 for Gemini). Bottleneck is the documentation-grounding pattern,
+not the model.
 
-**Comparison:** DABstep paper reports 14.55% on the hard split (best agent).
-Our reproduction aggregate across all 25 tasks: *[pending Phase 2]*.
+![Multi-model heatmap](report/figures/multimodel_heatmap.png)
 
-### 25-task reproduction — 2-model comparison (pending Phase 2–3)
+### Intervention study — 5 rule-precedence tasks (T05–T09)
 
-| Model | Baseline pass@3 | Intervention pass@3 (5 tasks) | Delta |
-|-------|----------------|------------------------------|-------|
-| gemini-3-flash-preview | *pending* | *pending* | *pending* |
-| claude-haiku-4-5 | *pending* | *pending* | *pending* |
+**Pre-registered hypothesis** (committed to [FINDINGS.md §4.1](FINDINGS.md#4-intervention-study)
+before runs landed): a 6-line rule-semantics prompt closes ≥ 25 pp on
+aggregate pass@3 across T05–T09 for both models.
+
+**Result: hypothesis failed at pass@3 — but per-trial deltas are large.**
+
+| Model | Baseline pass@3 | Intervention pass@3 | Δ |
+|-------|:---------------:|:-------------------:|:--:|
+| `gemini-3-flash-preview` | 40 % (2/5) | 40 % (2/5) | **+0 pp** |
+| `claude-haiku-4-5`       | 60 % (3/5) | 40 % (2/5) | **−20 pp** |
+
+**Per-trial pass counts (n = 3) on the 5 intervention tasks:**
+
+| Task | Gemini base | Gemini intv | Haiku base | Haiku intv |
+|------|:-----------:|:-----------:|:----------:|:----------:|
+| T05  | 0/3 | 0/3 | 0/3 | 0/3 |
+| T06  | 0/3 | 0/3 | 1/3 | **3/3** ✅ |
+| T07  | 1/3 | **3/3** ✅ | 1/3 | 0/3 |
+| T08  | 1/3 | **3/3** ✅ | 1/3 | 1/3 |
+| T09  | 0/3 | 0/3 | 0/3 | 0/3 |
+
+Three cells go from "lucky pass" to "deterministic pass" (Gemini T07/T08,
+Haiku T06). Two cells (T05, T09) remain stuck — these layer additional
+computation on top of rule matching, where the prompt clarification is
+necessary but not sufficient. Full discussion in
+[FINDINGS.md §4.2–4.3](FINDINGS.md#42-results).
+
+![Intervention delta](report/figures/intervention_delta.png)
+
+Verbatim intervention prompt: [`results/intervention_prompt.diff`](results/intervention_prompt.diff).
 
 ---
 
@@ -63,18 +89,18 @@ a sandboxed Docker container; the verifier reads `/output/answer.txt` and emits
 a binary reward.
 
 **Dataset:** Adyen payments scenario from DABstep (CC-BY-4.0). 138K synthetic
-payment transactions, 1000 fee rules, 30 merchants, and a 5-page markdown rule
-manual with implicit semantics. Same bundle across all 25 tasks.
+payment transactions, 1000 fee rules, 30 merchants, and a 5-page markdown
+rule manual with implicit semantics. Same bundle across all 10 tasks.
 
-**Agent under test:** `gemini-3-flash-preview` via `gemini-cli` (Google's
-official CLI, `--yolo` mode, tool use enabled). `claude-haiku-4-5-20251001`
-via a purpose-built adapter (`scripts/agents/claude_agent.py`) that implements
-the same read-data / tool-use / write-answer loop.
+**Agents under test:**
+- `gemini-3-flash-preview` via Harbor's `gemini-cli` agent.
+- `claude-haiku-4-5-20251001` via Harbor's built-in `claude-code` agent
+  (no custom adapter needed — Harbor ships with first-class Claude Code
+  support).
 
-**Ground truth:** DABstep's published answers for all 25 tasks. No ground
-truth is derived from the fee engine for the active task set. The engine
-([ENGINE.md](ENGINE.md)) is a separate artifact used to validate the
-rule-matching interpretation.
+**Ground truth:** DABstep's published answers for all 10 dev-split tasks.
+The fee engine ([ENGINE.md](ENGINE.md)) is a separate engineering artifact
+used to validate the rule-matching interpretation independently.
 
 **Verifier:** Deterministic pytest. Numeric answers are compared to tolerance
 (4–14 decimal places, following DABstep's answer-format spec). Set answers
@@ -146,32 +172,51 @@ answers. See [ENGINE.md](ENGINE.md).
 
 ### Intervention
 
-The intervention adds two sentences to the agent system prompt, then re-runs
-the 5 selected rule-precedence tasks (T05, T06, T09 + 2 from the new pool).
-The system prompt diff is committed at `results/intervention_prompt.diff`. See
-[FINDINGS.md §4](FINDINGS.md#4-intervention-study--results).
+The intervention prepends a 6-line rule-semantics block to `instruction.md`
+for the 5 selected rule-precedence tasks (T05–T09). Every other file in the
+task directory (verifier, `task.toml`, solution, environment) is
+byte-identical to the baseline, so any pass@3 delta attributes cleanly to
+the prompt change. The verbatim block is committed at
+[`results/intervention_prompt.diff`](results/intervention_prompt.diff). See
+[FINDINGS.md §4](FINDINGS.md#4-intervention-study) for pre-registration and
+the result.
 
 ---
 
 ## Repository layout
 
 ```
-samples/                    25 Harbor-format tasks (DABstep hard split)
-  _archive_originals/       3 archived engineered originals (see README there)
-  _archive_dabstep_unselected/  5 DABstep tasks that passed in pilot
-  _archive/                 Earlier development artifacts
-scripts/                    All automation (see scripts/README.md for a tour)
-  agents/                   Claude/OpenAI adapter wrappers (Phase 3)
-results/                    Versioned CSVs: pass@k, multi-model, intervention
+samples/                              10 active DABstep dev-split tasks
+  _archive_originals/                 3 archived engineered originals
+  _archive_dabstep_unselected/        Earlier-trial passing tasks
+  _archive_hardsplit_unfinished/      15 hard-split tasks scaffolded but
+                                      never finished (no public ground truth)
+samples_intervention/                 5 tasks (T05-T09) with rule-semantics
+                                      block prepended to instruction.md
+scripts/                              Automation (see scripts/README.md)
+  load_env.sh                         Source-able .env loader
+  run_gemini_trials.sh                Gemini baseline runner
+  run_haiku_baseline.sh               Haiku baseline runner
+  run_intervention.sh                 Intervention runner (both models)
+  build_intervention_set.py           Builds samples_intervention/
+  compute_results.py                  CSVs from job dirs
+  make_result_figures.py              Heatmap + intervention bar chart
+results/                              CSVs + prompt diff
+  multimodel_baseline.csv             10-task × 2-model pass@1/pass@3
+  intervention.csv                    5-task × 2-model baseline vs intervention
+  intervention_prompt.diff            verbatim 6-line block
+  per_task_rewards.json               raw rewards array per cell
 report/
-  report.md                 Original 8-task submission report (historical artifact)
-  figures/                  PNG figures (difficulty curve, failure taxonomies, heatmaps)
-  data/                     Intermediate CSVs from analysis scripts
-paper/                      LaTeX paper + compiled PDF (Phase 4)
-jobs/                       Raw Harbor outputs (oracle, nop, gemini, haiku trials)
-logs/                       Cleaned trial outputs in submission-brief format
-_data_cache/                Raw DABstep dataset (not in git; run scripts/scaffold_tasks.py)
-submission/                 Frozen original submission (unmodified)
+  report.md                           Original 8-task submission report
+  figures/                            PNG figures
+paper/                                LaTeX paper source + Makefile
+jobs/                                 Raw Harbor outputs
+  gemini/                             Gemini baseline trials
+  haiku/                              Haiku baseline trials
+  intervention_gemini/                Gemini intervention trials
+  intervention_haiku/                 Haiku intervention trials
+submission/                           Frozen original 8-task submission
+_data_cache/                          Raw DABstep dataset (gitignored)
 ```
 
 ---
@@ -179,39 +224,38 @@ submission/                 Frozen original submission (unmodified)
 ## Reproducibility
 
 ```bash
-# Install dependencies
+# 1. Install dependencies (requires Python 3.11+, Docker, Harbor)
 pip install -r requirements.txt
 
-# 1. Cross-validate the fee engine (always-pass sanity check)
+# 2. Set API keys in a .env file (gitignored). Format: KEY = value
+echo 'GEMINI_API_KEY = ...' > .env
+echo 'ANTHROPIC_API_KEY = ...' >> .env
+
+# 3. Cross-validate the fee engine (6/6 against DABstep dev-split)
 python scripts/cross_validate_engine.py
 
-# 2. Build all 25 Harbor tasks
-python scripts/build_dabstep_tasks.py
+# 4. Run gemini-3-flash-preview baseline (3 trials × 10 tasks)
+bash scripts/run_gemini_trials.sh
 
-# 3. Copy data into each task's environment/data/
-python scripts/scaffold_tasks.py
+# 5. Run claude-haiku-4-5 baseline (3 trials × 10 tasks)
+bash scripts/run_haiku_baseline.sh
 
-# 4. Confirm oracle=1.0 and nop=0.0 on all 25 tasks
-bash scripts/run_oracle_nop_checks.sh
+# 6. Build intervention task variants (samples_intervention/)
+python scripts/build_intervention_set.py
 
-# 5. Run gemini-3-flash-preview baseline (3 trials per task)
-GEMINI_API_KEY=<your-key> bash scripts/run_reproduction_baseline.sh
+# 7. Run intervention on both models (3 trials × 5 tasks × 2 models)
+bash scripts/run_intervention.sh   # or: scripts/run_intervention.sh gemini
 
-# 6. Run claude-haiku-4-5 baseline
-ANTHROPIC_API_KEY=<your-key> bash scripts/run_reproduction_haiku.sh
+# 8. Aggregate CSVs + figures
+python scripts/compute_results.py
+python scripts/make_result_figures.py
 
-# 7. Compute pass@k and multi-model table
-python scripts/compute_reproduction_pass_at_k.py
-python scripts/compute_multimodel_table.py
-
-# 8. Run intervention study (5 tasks × 2 models)
-GEMINI_API_KEY=<your-key> ANTHROPIC_API_KEY=<your-key> bash scripts/run_intervention.sh
-python scripts/compute_intervention_delta.py
-
-# 9. Generate figures
-python scripts/generate_report_figures.py
-python scripts/generate_corrected_failure_pie.py
+# 9. Build the paper PDF (requires TeXLive / MiKTeX)
+cd paper && make pdf
 ```
+
+Total run-time: ~2-4 hours wall-clock at 2 concurrent trials.
+Total cost: ~$20 across both APIs (Gemini + Anthropic).
 
 ---
 

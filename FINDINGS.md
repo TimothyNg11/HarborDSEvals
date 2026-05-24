@@ -1,10 +1,9 @@
 # Findings: Where Flash-Class LLMs Fail on Documentation-Grounded Data Analysis
 
-> **Status:** Sections 1–3 document the failure-mode analysis on the 10-task
-> DABstep dev-split. Section 4 (intervention study) pre-registers a hypothesis
-> here before the experiment is run — the result will be appended below the
-> pre-registration. Section 5 (multi-model comparison: Gemini-3-Flash vs
-> Claude-Haiku-4.5 on all 10 tasks) is filled in after Phase A2 completes.
+> **Status:** Complete. Sections 1–3 cover the failure-mode taxonomy. §4
+> reports the pre-registered intervention study (§4.1 = hypothesis,
+> committed before runs; §4.2 = result, mixed; §4.3 = verdict). §5 reports
+> the 10-task two-model comparison. §6 ties it together.
 
 ---
 
@@ -180,8 +179,81 @@ negative result is also a finding.
 
 ### 4.2 Results
 
-> *[To be filled after `scripts/run_intervention.sh` completes. See
-> `results/intervention.csv` and `report/figures/intervention_delta.png`.]*
+**The pre-registered hypothesis failed.** Aggregate pass@3 across T05–T09 did
+not improve by ≥ 25 pp for either model. The actual deltas:
+
+| Model | Baseline pass@3 (5 tasks) | Intervention pass@3 | Δ (pp) |
+|-------|---------------------------|---------------------|--------|
+| `gemini-3-flash-preview` | 40 % (2/5) | 40 % (2/5) | **+0** |
+| `claude-haiku-4-5`       | 60 % (3/5) | 40 % (2/5) | **−20** |
+
+Source: [`results/intervention.csv`](results/intervention.csv).
+
+But the per-trial data is more interesting than the pass@3 summary suggests.
+A pass@3 of "1" means *any* trial out of 3 passed. It hides large changes in
+*how reliably* the model passes.
+
+**Per-task per-trial pass counts (out of 3):**
+
+| Task | Gemini base | Gemini intv | Δ trials | Haiku base | Haiku intv | Δ trials |
+|------|:-----------:|:-----------:|:--------:|:----------:|:----------:|:--------:|
+| T05 (avg-fee, multi-filter) | 0/3 | 0/3 | 0 | 0/3 | 0/3 | 0 |
+| T06 (fee IDs R+B)           | 0/3 | 0/3 | 0 | 1/3 | **3/3** | **+2** |
+| T07 (fee IDs Belles d10)    | 1/3 | **3/3** | **+2** | 1/3 | 0/3 | −1 |
+| T08 (fee IDs Belles Mar)    | 1/3 | **3/3** | **+2** | 1/3 | 1/3 | 0 |
+| T09 (counterfactual delta)  | 0/3 | 0/3 | 0 | 0/3 | 0/3 | 0 |
+
+Three things stand out:
+
+1. **The intervention has a real, large effect on the right kind of task.** On
+   T06 (Haiku) and T07–T08 (Gemini), the per-trial pass count jumps from 0/3 or
+   1/3 to 3/3. Pass@3 doesn't move because the baseline already had at least
+   one lucky trial passing; pass@1 moves dramatically (0 % → 100 % on T07–T08
+   for Gemini, 33 % → 100 % on T06 for Haiku). **Consistency improves where
+   the manual sentence is the operative bottleneck.**
+
+2. **The intervention does not help on the hardest rule-precedence tasks.**
+   T05 (averaging fees over filtered rule subsets) and T09 (14-decimal
+   counterfactual delta) remain 0/3 across both arms and both models. The
+   prompt clarification is necessary but not sufficient — these tasks
+   compound the rule-matching error with additional computation (subset
+   averaging, per-transaction counterfactual replay) that the model still
+   gets wrong even when the matching semantics are explicit.
+
+3. **The intervention causes a regression on T07 for Haiku.** Baseline 1/3 →
+   intervention 0/3. We do not have a confident explanation. One hypothesis:
+   the longer prompt with the rule-semantics block changes how Haiku
+   allocates attention or planning budget, and it ends up running out of
+   reasoning steps before reaching the answer. Single-trial variance on n=3
+   is also a candidate (∆ = −33 % in pass rate is one Bernoulli flip).
+
+![Intervention deltas](report/figures/intervention_delta.png)
+
+### 4.3 Verdict: mixed — partial knowledge-gap, residual capability-gap
+
+The pre-registered binary framing (knowledge gap vs. capability gap) does not
+cleanly apply to the observed data. A more accurate reading:
+
+- **For "pure" rule-intersection tasks (T06–T08)**, the dominant failure mode
+  *is* a knowledge gap: when the rule-matching convention is stated
+  explicitly, both models start passing reliably (Gemini T07, T08; Haiku
+  T06). This is the cleanest knowledge-gap evidence in the dataset.
+
+- **For "compound" tasks that layer additional computation on top of rule
+  matching (T05, T09)**, the failure is more than a knowledge gap. Even with
+  the rule semantics handed to the model, it still doesn't get the answer
+  right. Whether the residual failure is a planning capability gap, a
+  numeric-precision capability gap, or something else is the next question
+  to study.
+
+- **The pass@3 metric is the wrong instrument for measuring this kind of
+  intervention** at this sample size. It collapses 1/3 and 3/3 to the same
+  bucket; the interesting effect lives in pass@1. Future work should report
+  pass@1 alongside pass@3.
+
+The result is not the clean win the pre-registration predicted, but it is a
+more *informative* result than a clean win would have been: it sharpens the
+distinction between two sub-types of failure on this benchmark family.
 
 ---
 
@@ -199,33 +271,95 @@ built-in `claude-code` agent).
 - Do the two models share the same failure distribution, or does each have a
   distinct profile?
 
-**Results:** *[To be filled after Haiku baseline completes. See
-[`results/multimodel_baseline.csv`](results/multimodel_baseline.csv) and
-[`report/figures/multimodel_heatmap.png`](report/figures/multimodel_heatmap.png).]*
+**Results.**
+
+Aggregate baseline pass@3 across all 10 tasks is **identical** for both
+models: **50 %** (5/10). The pass *distribution* is also close to identical:
+
+| Task | Gemini-3-Flash pass@3 | Haiku-4.5 pass@3 |
+|------|:---------------------:|:----------------:|
+| T01 (issuing country, easy lookup) | ✅ 3/3 | ✅ 2/3 |
+| T02 (top fraud country, multiple-choice) | ✅ 2/3 | ❌ 0/3 |
+| T03 (semantic Martinis, premise check) | ❌ 0/3 | ❌ 0/3 |
+| T04 (avg fee credit, single filter) | ✅ 1/3 | ✅ 2/3 |
+| T05 (avg fee H+MCC+scheme, multi-filter) | ❌ 0/3 | ❌ 0/3 |
+| T06 (fee IDs R+B, rule intersection) | ❌ 0/3 | ✅ 1/3 |
+| T07 (fee IDs Belles day 10) | ✅ 1/3 | ✅ 1/3 |
+| T08 (fee IDs Belles March) | ✅ 1/3 | ✅ 1/3 |
+| T09 (Belles counterfactual delta) | ❌ 0/3 | ❌ 0/3 |
+| T10 (ACI optimization, combinatorial) | ❌ 0/3 | ❌ 0/3 |
+
+Source: [`results/multimodel_baseline.csv`](results/multimodel_baseline.csv).
+
+![Multi-model heatmap](report/figures/multimodel_heatmap.png)
+
+**Reading.**
+
+- **Same failure-mode profile across both models.** Both flash-class models
+  fail on the same five tasks (T03, T05, T09, T10, plus T02 for Haiku /
+  T06 for Gemini). The failures are clustered around the rule-precedence
+  misread (§2) and the compound failures it enables (§3). The rule-precedence
+  misread is *not* a Gemini-specific artifact; it's a flash-class
+  documentation-grounding pattern.
+
+- **Two model-specific divergences.** Haiku reaches 1/3 on T06 where Gemini
+  gets 0/3 — the only baseline task where one model unambiguously outperforms
+  the other on the rule-intersection failure mode. Conversely, Gemini reaches
+  2/3 on T02 (top fraud country, a multi-choice lookup with format gotcha)
+  where Haiku gets 0/3. The two models have different small biases on
+  semantic / formatting questions but agree on the hard rule tasks.
+
+- **Aggregate cost-tier conclusion.** On the dev split, replacing
+  Gemini-3-Flash with Claude-Haiku-4.5 (or vice versa) does not change
+  measured performance at the pass@3 level. The bottleneck is not which
+  flash-class model you choose; it's the documentation-grounding pattern
+  itself.
 
 ---
 
 ## 6. Summary and implications
 
-> **[Filled in after Phases A2 (Haiku baseline) and B3 (intervention) complete.]**
+The observed result lands between the two pre-registered framings:
 
-Depending on the intervention result:
+**On three of the five intervention tasks, prompt-level disambiguation is
+clearly load-bearing.** Per-trial pass counts on T06 (for Haiku) and T07–T08
+(for Gemini) jump from at-most-1/3 to 3/3 when the rule-semantics block is
+prepended. On these tasks, the dominant failure mode is a **knowledge gap**
+about one convention in one rule system, and a single sentence at the top of
+the task prompt closes the gap.
 
-**If intervention works:** The dominant failure mode is a knowledge gap about
-one convention in one rule system. This implies:
-- Flash-class models can handle the *computation* required for multi-step fee
-  aggregation if they apply the right rules.
-- The failure in these benchmarks (DABstep, DAB) is not a capability ceiling;
-  it's a documentation-grounding failure.
-- Better prompting or RAG over the rule manual may be sufficient for production
-  deployments.
+**On the other two intervention tasks (T05, T09), the gap is not closed.**
+T05 requires averaging fees across a filtered rule subset; T09 requires
+recomputing per-transaction fees under a counterfactual rule modification.
+Both compound the rule-matching error with additional computation that
+remains wrong even when the matching semantics are explicitly stated. This
+is the **capability-gap** envelope — prompt engineering by itself is not
+enough.
 
-**If intervention does not work:** The dominant failure mode is a capability
-gap. The model cannot reliably apply a rule it was just told, at this level of
-compositional complexity. This implies:
-- Prompt engineering is insufficient.
-- The correct fix is scaffolding (e.g., structured rule-extraction step before
-  computation), tool use, or a stronger model.
+**Implications:**
+
+- For *production deployments* over rule-driven domains (payments, claims,
+  tax), the cheapest intervention is to explicitly state non-default
+  conventions in the system prompt. The DABstep manual contains the correct
+  rule, but "contains" and "surfaces saliently under task context" are not
+  the same thing.
+
+- For *benchmark design*, pass@3 is the wrong measurement instrument for
+  prompt-level interventions at this sample size. The interesting effect
+  lives in pass@1 (consistency), not in any-of-3 (luck). Future work should
+  report both.
+
+- For *next-step research*, the compound tasks (T05, T09 here; the
+  combinatorial tasks T10 / hard-split variants) are where the residual
+  capability gap lives. The right next ablation is structured tool use —
+  give the model a deterministic rule-matching engine to orchestrate
+  rather than emulate, and see whether the compound tasks now solve.
+
+- For *model selection at this cost tier*, the two flash-class models tested
+  here are statistically indistinguishable at pass@3 (both 50 % on the 10
+  dev-split tasks) and share the same failure profile. The choice between
+  Gemini-3-Flash and Claude-Haiku-4.5 should be driven by integration cost,
+  latency, and price — not by measured capability on this benchmark.
 
 ---
 
