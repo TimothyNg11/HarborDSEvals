@@ -1,0 +1,182 @@
+{
+  "T01": {
+    "gemini_baseline": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "haiku_baseline": [
+      1.0,
+      1.0,
+      0.0
+    ],
+    "gemini_intervention": [],
+    "haiku_intervention": []
+  },
+  "T02": {
+    "gemini_baseline": [
+      1.0,
+      1.0,
+      0.0
+    ],
+    "haiku_baseline": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gemini_intervention": [],
+    "haiku_intervention": []
+  },
+  "T03": {
+    "gemini_baseline": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "haiku_baseline": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gemini_intervention": [],
+    "haiku_intervention": []
+  },
+  "T04": {
+    "gemini_baseline": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "haiku_baseline": [
+      1.0,
+      1.0,
+      0.0
+    ],
+    "gemini_intervention": [],
+    "haiku_intervention": []
+  },
+  "T05": {
+    "gemini_baseline": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "haiku_baseline": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gemini_intervention": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "haiku_intervention": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "T06": {
+    "gemini_baseline": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "haiku_baseline": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "gemini_intervention": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "haiku_intervention": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "T07": {
+    "gemini_baseline": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "haiku_baseline": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "gemini_intervention": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "haiku_intervention": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "T08": {
+    "gemini_baseline": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "haiku_baseline": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "gemini_intervention": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "haiku_intervention": [
+      0.0,
+      0.0,
+      1.0
+    ]
+  },
+  "T09": {
+    "gemini_baseline": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "haiku_baseline": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gemini_intervention": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "haiku_intervention": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "T10": {
+    "gemini_baseline": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "haiku_baseline": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gemini_intervention": [],
+    "haiku_intervention": []
+  }
+}

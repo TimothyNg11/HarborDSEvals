@@ -39,8 +39,9 @@ samples/**/environment/data/
 samples_intervention/**/environment/data/
 submission/samples/**/environment/data/
 
-# Raw Harbor agent trajectories (large; we keep verifier summaries in jobs/**/verifier/)
-jobs/**/agent/
+# Raw Harbor agent trajectories + trial outputs (large; we keep canonical
+# results in results/*.csv and results/per_task_rewards.json instead).
+jobs/
 
 # LaTeX build artifacts
 paper/build/
