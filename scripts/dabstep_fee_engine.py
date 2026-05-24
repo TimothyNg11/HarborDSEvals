@@ -112,7 +112,11 @@ def matching_rule_ids(rules, txn, merch, **kwargs):
 
 
 def per_txn_total_fee(rules, txn, merch, **kwargs) -> float:
-    """Sum fees across ALL matching rules for one transaction."""
+    """Sum fees across ALL matching rules for one transaction.
+    Returns 0.0 for refused transactions (never processed, no fee charged).
+    """
+    if txn.get("is_refused_by_adyen", False):
+        return 0.0
     return sum(compute_fee(r, txn["eur_amount"])
                for r in rules if rule_matches_txn(r, txn, merch, **kwargs))
 
@@ -143,13 +147,18 @@ def compute_monthly_buckets(payments_df: pd.DataFrame,
     `monthly_volume_bucket` and `monthly_fraud_level` bucket strings
     that the DABstep fee rules key on.
 
-    Volume = sum of `eur_amount` across the month.
+    Refused transactions (is_refused_by_adyen == True) are excluded: they
+    were never processed by Adyen, so they contribute neither to settled
+    volume nor to fee-eligible fraud disputes.
+
+    Volume = sum of `eur_amount` across settled transactions in the month.
     Fraud level = 100 * sum(eur_amount where has_fraudulent_dispute) /
-                       sum(eur_amount).
+                       sum(settled eur_amount).
     Returns: {1: (volume_bucket, fraud_bucket), 2: (...), ..., 12: (...)}.
     """
     sub = payments_df[(payments_df["merchant"] == merchant_name) &
-                      (payments_df["year"] == year)].copy()
+                      (payments_df["year"] == year) &
+                      (payments_df["is_refused_by_adyen"] == False)].copy()
     if len(sub) == 0:
         return {m: (None, None) for m in range(1, 13)}
     sub["__d"] = pd.to_datetime(sub["day_of_year"].astype(int) - 1,
@@ -168,7 +177,11 @@ def compute_monthly_buckets(payments_df: pd.DataFrame,
 def per_txn_total_fee_with_buckets(rules, txn, merch,
                                     monthly_buckets: dict) -> float:
     """Like `per_txn_total_fee` but resolves the txn's monthly bucket
-    from the precomputed table. `monthly_buckets` maps month-int -> (vol, fraud)."""
+    from the precomputed table. `monthly_buckets` maps month-int -> (vol, fraud).
+    Returns 0.0 for refused transactions (never processed, no fee charged).
+    """
+    if txn.get("is_refused_by_adyen", False):
+        return 0.0
     # Derive month from day_of_year (2023 non-leap)
     day = int(txn["day_of_year"])
     import datetime
