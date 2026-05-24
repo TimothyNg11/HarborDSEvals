@@ -1,9 +1,10 @@
 # Findings: Where Flash-Class LLMs Fail on Documentation-Grounded Data Analysis
 
-> **Status:** Sections 1–3 document the original 5-task submission analysis.
-> Sections 4–6 are placeholders that will be filled in after the 25-task
-> reproduction (Phase 2), multi-model baseline (Phase 3B), and intervention
-> study (Phase 3C) are complete.
+> **Status:** Sections 1–3 document the failure-mode analysis on the 10-task
+> DABstep dev-split. Section 4 (intervention study) pre-registers a hypothesis
+> here before the experiment is run — the result will be appended below the
+> pre-registration. Section 5 (multi-model comparison: Gemini-3-Flash vs
+> Claude-Haiku-4.5 on all 10 tasks) is filled in after Phase A2 completes.
 
 ---
 
@@ -127,51 +128,86 @@ insufficient search depth.
 
 ---
 
-## 4. Intervention study — results
+## 4. Intervention study
 
-> **[PLACEHOLDER — fill after Phase 3C]**
+### 4.1 Pre-registration
 
-**Pre-registered hypothesis:** Adding the following sentence to the agent
-system prompt closes ≥ 25 percentage points on aggregate pass@3 for the 5
-rule-precedence tasks (T05, T06, T09, + 2 from the new pool):
+**This subsection is committed to the repository BEFORE the intervention
+runs. The git history is the provenance — `git log FINDINGS.md` should show
+this commit landed before the `feat: rule-precedence prompt intervention`
+commits below it.**
 
-> *"In fee rules, a null field or empty list means the rule applies to all
-> values of that field. When multiple rules match a transaction, every
-> matching rule applies; the fees are summed."*
+**Hypothesis (pre-registered):** Adding a single rule-semantics block to the
+top of each task's `instruction.md` closes **≥ 25 percentage points on
+aggregate pass@3** across the 5 rule-precedence tasks (T05, T06, T07, T08,
+T09), for **both** `gemini-3-flash-preview` and `claude-haiku-4-5-20251001`.
 
-**Why this is a falsifiable claim:** If the failure is a knowledge gap
-(Gemini doesn't know which convention applies), the intervention resolves it.
-If the failure is a capability gap (Gemini can't apply even a stated rule
-correctly at this complexity), the intervention doesn't help. Either outcome
-is informative.
+**Tasks selected for the intervention arm:** The 5 fee-rule / fee-ID
+intersection tasks in the 10-task set — T05, T06, T07, T08, T09 — chosen
+because they are the cleanest test of the rule-precedence-misread mechanism
+described in §2. T03 (semantic) and T10 (combinatorial) are deliberately
+excluded: their failure mechanisms (§3) are different and the intervention
+should not affect them.
 
-**Results:** *[To be filled after running `scripts/run_intervention.sh`
-and `scripts/compute_intervention_delta.py`. See `results/intervention.csv`.]*
+**Intervention:** Prepend this verbatim block to `instruction.md` for each of
+the 5 tasks. No other file (verifier, `task.toml`, solution, environment)
+changes, so any pass@3 delta attributes cleanly to the prompt:
+
+> **Important rule-matching semantics for fee rules in `/data/fees.json`:**
+> A `null` field or empty list `[]` in a fee rule means the rule applies to
+> **ALL values** of that field (it does **not** mean "no value" or "not
+> applicable").
+> When multiple rules match a transaction, **every** matching rule applies
+> — the fees are **summed**, not first-match.
+
+The verbatim block is also committed at
+[`results/intervention_prompt.diff`](results/intervention_prompt.diff).
+
+**Falsifiable predictions:**
+
+- **If the failure is a knowledge gap** (the model never had the rule semantics
+  internalised in the first place): intervention closes ≥ 25 pp on aggregate
+  pass@3 across the 5 tasks for both models. Knowledge-gap framing wins.
+- **If the failure is a capability gap** (the model can read the sentence but
+  can't reliably apply it at this compositional depth): intervention closes
+  < 10 pp, or shows only one model improving. Capability-gap framing wins.
+- **Mixed outcome** (intervention helps Haiku more than Gemini, or vice versa,
+  or some tasks but not others): documented as such — the binary framing
+  doesn't apply uniformly.
+
+Outcome direction is reported **honestly regardless of sign**. A null or
+negative result is also a finding.
+
+### 4.2 Results
+
+> *[To be filled after `scripts/run_intervention.sh` completes. See
+> `results/intervention.csv` and `report/figures/intervention_delta.png`.]*
 
 ---
 
-## 5. Multi-model comparison — results
+## 5. Multi-model comparison
 
-> **[PLACEHOLDER — fill after Phase 3B]**
+**Models:** `gemini-3-flash-preview`, `claude-haiku-4-5-20251001` (via Harbor's
+built-in `claude-code` agent).
 
-**Models:** `gemini-3-flash-preview`, `claude-haiku-4-5-20251001`
-
-**Tasks:** All 25 DABstep hard-split tasks.
+**Tasks:** 10 DABstep dev-split tasks (the existing wrapped set in `samples/`).
 
 **Key questions:**
-- Does haiku exhibit the same rule-precedence misread?
-- Is the failure mode model-family-specific or universal across flash-class models?
-- Do the two models share the same failure distribution, or does each have a distinct profile?
+- Does Haiku exhibit the same rule-precedence misread as Gemini?
+- Is the failure mode model-family-specific, or universal across flash-class
+  models?
+- Do the two models share the same failure distribution, or does each have a
+  distinct profile?
 
-**Results:** *[To be filled after running `scripts/run_reproduction_haiku.sh`
-and `scripts/compute_multimodel_table.py`. See `results/multimodel_baseline.csv`
-and `report/figures/multimodel_heatmap.png`.]*
+**Results:** *[To be filled after Haiku baseline completes. See
+[`results/multimodel_baseline.csv`](results/multimodel_baseline.csv) and
+[`report/figures/multimodel_heatmap.png`](report/figures/multimodel_heatmap.png).]*
 
 ---
 
 ## 6. Summary and implications
 
-> **[PLACEHOLDER — fill after Phases 3B and 3C are complete]**
+> **[Filled in after Phases A2 (Haiku baseline) and B3 (intervention) complete.]**
 
 Depending on the intervention result:
 

@@ -1,0 +1,46 @@
+schema_version = "1.2"
+
+artifacts = []
+
+[task]
+name = "abundant/dabstep-task-1753-what-are-the-applicable-fee"
+description = "DABstep dev-split task 1753 (hard) - What are the applicable fee IDs for Belles_cookbook_store in"
+keywords = ["dabstep", "data-agent", "multi-step", "hard"]
+
+[[task.authors]]
+name = "Abundant Research Eval"
+email = "takehome@abundant.ai"
+
+[metadata]
+author_name = "Abundant Research Eval"
+author_email = "takehome@abundant.ai"
+difficulty = "hard"
+category = "data_science"
+tags = ["dabstep", "multi-step-reasoning", "implicit-rules"]
+expert_time_estimate_min = 60
+junior_time_estimate_min = 180
+source = "DABstep (arXiv:2506.23719) dev split, Adyen CC-BY-4.0"
+source_task_id = "1753"
+difficulty_level = "hard"
+
+[verifier]
+timeout_sec = 120.0
+
+[verifier.env]
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+build_timeout_sec = 600.0
+os = "linux"
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = true
+mcp_servers = []
+
+[environment.env]
+
+[solution.env]

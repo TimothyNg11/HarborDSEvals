@@ -1,0 +1,7 @@
+# Verbatim block prepended to instruction.md in samples_intervention/.
+# This is the ONLY difference between baseline and intervention task variants.
+
+> **Important rule-matching semantics for fee rules in `/data/fees.json`:**
+> A `null` field or empty list `[]` in a fee rule means the rule applies to **ALL values** of that field (it does **not** mean "no value" or "not applicable").
+> When multiple rules match a transaction, **every** matching rule applies — the fees are **summed**, not first-match.
+
