@@ -1,0 +1,41 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 1,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1779081735.500764,
+            "stop": 1779081735.5309267
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_file_exists",
+                "status": "passed",
+                "duration": 0.0005424670089269057,
+                "start": 1779081735.513774,
+                "stop": 1779081735.5151298,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_compound_match",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0007078409980749711,
+                "start": 1779081735.5153406,
+                "stop": 1779081735.5302236,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "def test_compound_match():\n        pred = _read()\n        parts = pred.split(\":\")\n        assert len(parts) == 2, f\"Expected 'scheme:fee' format, got {pred!r}\"\n        pred_scheme, pred_fee = parts[0].strip(), parts[1].strip()\n        assert pred_scheme.lower() == SCHEME.lower(), (\n            f\"Scheme mismatch: predicted {pred_scheme!r}, expected {SCHEME!r}\"\n        )\n        pred_fee_num = float(pred_fee.replace(\"EUR\", \"\").strip())\n>       assert abs(pred_fee_num - FEE_TRUTH) <= TOL, (\n            f\"Fee mismatch: predicted {pred_fee_num}, expected {FEE_TRUTH} +/- {TOL}\"\n        )\nE       AssertionError: Fee mismatch: predicted 0.140103, expected 0.043202 +/- 5e-06\nE       assert 0.09690100000000001 <= 5e-06\nE        +  where 0.09690100000000001 = abs((0.140103 - 0.043202))\n\n/tests/test_outputs.py:31: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

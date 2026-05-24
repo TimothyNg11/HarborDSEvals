@@ -1,0 +1,47 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 3,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1779006540.8101392,
+            "stop": 1779006540.8381107
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_output_file_exists",
+                "status": "passed",
+                "duration": 0.0005465139984153211,
+                "start": 1779006540.8209405,
+                "stop": 1779006540.8289394,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_output_parses_as_number",
+                "status": "passed",
+                "duration": 0.0003656450016933377,
+                "start": 1779006540.8291557,
+                "stop": 1779006540.8330107,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_value_within_tolerance",
+                "status": "passed",
+                "duration": 0.0004168980003669276,
+                "start": 1779006540.833207,
+                "stop": 1779006540.836018,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            }
+        ]
+    }
+}

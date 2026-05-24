@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "C:\Users\timot\AppData\Local\Programs\Python\Python313\Lib\site-packages\harbor\trial\trial.py", line 1262, in run
+    await self._execute_agent()
+  File "C:\Users\timot\AppData\Local\Programs\Python\Python313\Lib\site-packages\harbor\trial\trial.py", line 391, in _execute_agent
+    await asyncio.wait_for(
+    ...<6 lines>...
+    )
+  File "C:\Users\timot\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\timot\AppData\Local\Programs\Python\Python313\Lib\site-packages\harbor\agents\installed\base.py", line 42, in wrapper
+    return await fn(self, instruction, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\timot\AppData\Local\Programs\Python\Python313\Lib\site-packages\harbor\agents\installed\gemini_cli.py", line 658, in run
+    raise ValueError("Model name must be in the format provider/model_name")
+ValueError: Model name must be in the format provider/model_name

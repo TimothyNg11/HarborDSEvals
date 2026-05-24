@@ -1,0 +1,43 @@
+{
+    "id": "6ddb9531-06ef-4afc-ac62-bc603bf4f172",
+    "started_at": "2026-05-17T04:23:54.115045",
+    "updated_at": "2026-05-17T04:24:31.734239",
+    "finished_at": "2026-05-17T04:24:31.734239",
+    "n_total_trials": 1,
+    "stats": {
+        "n_completed_trials": 1,
+        "n_errored_trials": 1,
+        "n_running_trials": 0,
+        "n_pending_trials": 0,
+        "n_cancelled_trials": 0,
+        "n_retries": 0,
+        "evals": {
+            "gemini-cli__gemini-3-flash-preview__adhoc": {
+                "n_trials": 1,
+                "n_errors": 1,
+                "metrics": [
+                    {
+                        "mean": 0.0
+                    }
+                ],
+                "pass_at_k": {},
+                "reward_stats": {
+                    "reward": {
+                        "0.0": [
+                            "task_01_nhanes_obesity_prevalenc__ni4kQ5P"
+                        ]
+                    }
+                },
+                "exception_stats": {
+                    "NonZeroAgentExitCodeError": [
+                        "task_01_nhanes_obesity_prevalenc__ni4kQ5P"
+                    ]
+                }
+            }
+        },
+        "n_input_tokens": 0,
+        "n_cache_tokens": 0,
+        "n_output_tokens": 0,
+        "cost_usd": 0.0
+    }
+}

@@ -1,0 +1,41 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 1,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1779066196.7218044,
+            "stop": 1779066196.7501569
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_file_exists",
+                "status": "passed",
+                "duration": 0.0006575950028491206,
+                "start": 1779066196.7337203,
+                "stop": 1779066196.7353685,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_answer_matches",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0009535680037515704,
+                "start": 1779066196.735806,
+                "stop": 1779066196.7494729,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "def test_answer_matches():\n        pred = _read_output()\n        if ANSWER_MODE == \"number\":\n            try:\n                pred_num = float(pred.replace(\",\", \"\").replace(\"EUR\", \"\").strip())\n                truth_num = float(str(GROUND_TRUTH).replace(\",\", \"\").strip())\n            except ValueError as e:\n                raise AssertionError(\n                    f\"Expected a numeric answer; got {pred!r}. ({e})\"\n                )\n            tol = NUM_TOL\n            if tol is None:\n                tol = abs(truth_num) * 1e-3 if truth_num else 1e-6\n            assert abs(pred_num - truth_num) <= tol, (\n                f\"Predicted {pred_num}, expected {truth_num} +/- {tol:.6g}\"\n            )\n        elif ANSWER_MODE == \"list\":\n            # Normalise as set of trimmed tokens; case-insensitive\n            def to_set(s):\n                return set(t.strip().lower() for t in s.split(\",\") if t.strip())\n            pred_set = to_set(pred)\n            truth_set = to_set(str(GROUND_TRUTH))\n>           assert pred_set == truth_set, (\n                f\"List mismatch: extra={sorted(pred_set - truth_set)[:10]}, \"\n                f\"missing={sorted(truth_set - pred_set)[:10]}, \"\n                f\"|pred|={len(pred_set)}, |truth|={len(truth_set)}\"\n            )\nE           AssertionError: List mismatch: extra=[], missing=['107', '150', '163', '473', '608', '626', '960'], |pred|=27, |truth|=34\nE           assert {'123', '231'...', '347', ...} == {'107', '123'...', '249', ...}\nE             \nE             Extra items in the right set:\nE             '608'\nE             '626'\nE             '107'\nE             '150'\nE             '473'...\nE             \nE             ...Full output truncated (3 lines hidden), use '-vv' to show\n\n/tests/test_outputs.py:56: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

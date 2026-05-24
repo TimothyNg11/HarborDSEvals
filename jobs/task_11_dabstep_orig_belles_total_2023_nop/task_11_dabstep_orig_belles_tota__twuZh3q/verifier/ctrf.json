@@ -1,0 +1,44 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 0,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1779069247.5130804,
+            "stop": 1779069247.5407455
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_file_exists",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0012489210021158215,
+                "start": 1779069247.5260432,
+                "stop": 1779069247.5371022,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "def test_file_exists():\n>       assert os.path.exists(RESULT_FILE)\nE       AssertionError: assert False\nE        +  where False = <function exists at 0x70e7c2c7b420>('/output/answer.txt')\nE        +    where <function exists at 0x70e7c2c7b420> = <module 'posixpath' (frozen)>.exists\nE        +      where <module 'posixpath' (frozen)> = os.path\n\n/tests/test_outputs.py:18: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_outputs.py::test_value_within_tolerance",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.00037211299786577,
+                "start": 1779069247.5373366,
+                "stop": 1779069247.5398788,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "def test_value_within_tolerance():\n>       raw = _read().replace(\",\", \"\").replace(\"EUR\", \"\").replace(\"+\", \"\").strip()\n              ^^^^^^^\n\n/tests/test_outputs.py:22: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n    def _read():\n>       assert os.path.exists(RESULT_FILE), f\"Missing {RESULT_FILE}\"\nE       AssertionError: Missing /output/answer.txt\nE       assert False\nE        +  where False = <function exists at 0x70e7c2c7b420>('/output/answer.txt')\nE        +    where <function exists at 0x70e7c2c7b420> = <module 'posixpath' (frozen)>.exists\nE        +      where <module 'posixpath' (frozen)> = os.path\n\n/tests/test_outputs.py:12: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

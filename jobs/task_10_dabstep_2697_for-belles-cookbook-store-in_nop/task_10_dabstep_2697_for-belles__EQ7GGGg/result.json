@@ -1,0 +1,100 @@
+{
+    "id": "57d33e09-dae0-43c3-8e64-0c605c737164",
+    "task_name": "abundant/dabstep-task-2697-for-belles-cookbook-store-in",
+    "trial_name": "task_10_dabstep_2697_for-belles__EQ7GGGg",
+    "trial_uri": "file:///C:/Users/timot/HarborDSEvals/jobs/task_10_dabstep_2697_for-belles-cookbook-store-in_nop/task_10_dabstep_2697_for-belles__EQ7GGGg",
+    "task_id": {
+        "path": "samples\\task_10_dabstep_2697_for-belles-cookbook-store-in"
+    },
+    "source": null,
+    "task_checksum": "8525852146303ccd65bcfd5ebb363f7624c8dee1a4ef91e172d03899f6ffb036",
+    "config": {
+        "task": {
+            "path": "samples\\task_10_dabstep_2697_for-belles-cookbook-store-in",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "task_10_dabstep_2697_for-belles__EQ7GGGg",
+        "trials_dir": "jobs\\task_10_dabstep_2697_for-belles-cookbook-store-in_nop",
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "nop",
+            "import_path": null,
+            "model_name": null,
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "kwargs": {},
+            "env": {}
+        },
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": false,
+            "delete": true,
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "suppress_override_warnings": false,
+            "mounts": null,
+            "env": {},
+            "kwargs": {}
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "env": {},
+            "disable": false
+        },
+        "artifacts": [],
+        "job_id": "fdbaaf81-8f11-413c-bf40-2943d25a96b5"
+    },
+    "agent_info": {
+        "name": "nop",
+        "version": "1.0.0",
+        "model_info": null
+    },
+    "agent_result": {
+        "n_input_tokens": null,
+        "n_cache_tokens": null,
+        "n_output_tokens": null,
+        "cost_usd": null,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 0.0
+        }
+    },
+    "exception_info": null,
+    "started_at": "2026-05-17T23:08:14.191154Z",
+    "finished_at": "2026-05-17T23:08:26.144465Z",
+    "environment_setup": {
+        "started_at": "2026-05-17T23:08:14.316312Z",
+        "finished_at": "2026-05-17T23:08:21.044758Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-05-17T23:08:21.044841Z",
+        "finished_at": "2026-05-17T23:08:21.044958Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-05-17T23:08:21.045042Z",
+        "finished_at": "2026-05-17T23:08:21.045104Z"
+    },
+    "verifier": {
+        "started_at": "2026-05-17T23:08:21.045672Z",
+        "finished_at": "2026-05-17T23:08:23.532657Z"
+    },
+    "step_results": null
+}

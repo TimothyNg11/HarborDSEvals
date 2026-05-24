@@ -1,0 +1,101 @@
+{
+    "id": "ada052bc-b7f2-43bf-bafe-3aa150515e92",
+    "task_name": "abundant/nhanes-obesity-prevalence",
+    "trial_name": "task_01_nhanes_obesity_prevalenc__9bt5q28",
+    "trial_uri": "file:///C:/Users/timot/HarborDSEvals/jobs/task01_gemini_smoke2/task_01_nhanes_obesity_prevalenc__9bt5q28",
+    "task_id": {
+        "path": "samples\\task_01_nhanes_obesity_prevalence"
+    },
+    "source": null,
+    "task_checksum": "7764cc43357adab17a7dd1489bfeacf6fd92629c9067a68dd0036c00f0248852",
+    "config": {
+        "task": {
+            "path": "samples\\task_01_nhanes_obesity_prevalence",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "task_01_nhanes_obesity_prevalenc__9bt5q28",
+        "trials_dir": "jobs\\task01_gemini_smoke2",
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "gemini-cli",
+            "import_path": null,
+            "model_name": "gemini-3-flash-preview",
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "kwargs": {},
+            "env": {}
+        },
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": true,
+            "delete": true,
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "suppress_override_warnings": false,
+            "mounts": null,
+            "env": {},
+            "kwargs": {}
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "env": {},
+            "disable": false
+        },
+        "artifacts": [],
+        "job_id": "51e3e974-1b61-4c7a-b6f5-30a194ce38db"
+    },
+    "agent_info": {
+        "name": "gemini-cli",
+        "version": "0.42.0",
+        "model_info": {
+            "name": "gemini-3-flash-preview",
+            "provider": null
+        }
+    },
+    "agent_result": {
+        "n_input_tokens": null,
+        "n_cache_tokens": null,
+        "n_output_tokens": null,
+        "cost_usd": null,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": null,
+    "exception_info": {
+        "exception_type": "ValueError",
+        "exception_message": "Model name must be in the format provider/model_name",
+        "exception_traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\timot\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\harbor\\trial\\trial.py\", line 1262, in run\n    await self._execute_agent()\n  File \"C:\\Users\\timot\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\harbor\\trial\\trial.py\", line 391, in _execute_agent\n    await asyncio.wait_for(\n    ...<6 lines>...\n    )\n  File \"C:\\Users\\timot\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\asyncio\\tasks.py\", line 507, in wait_for\n    return await fut\n           ^^^^^^^^^\n  File \"C:\\Users\\timot\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\harbor\\agents\\installed\\base.py\", line 42, in wrapper\n    return await fn(self, instruction, *args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\timot\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\harbor\\agents\\installed\\gemini_cli.py\", line 658, in run\n    raise ValueError(\"Model name must be in the format provider/model_name\")\nValueError: Model name must be in the format provider/model_name\n",
+        "occurred_at": "2026-05-17T04:21:54.985939"
+    },
+    "started_at": "2026-05-17T08:21:25.417727Z",
+    "finished_at": "2026-05-17T08:21:57.240038Z",
+    "environment_setup": {
+        "started_at": "2026-05-17T08:21:25.465457Z",
+        "finished_at": "2026-05-17T08:21:32.798923Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-05-17T08:21:32.798968Z",
+        "finished_at": "2026-05-17T08:21:54.983168Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-05-17T08:21:54.983272Z",
+        "finished_at": "2026-05-17T08:21:54.983347Z"
+    },
+    "verifier": null,
+    "step_results": null
+}

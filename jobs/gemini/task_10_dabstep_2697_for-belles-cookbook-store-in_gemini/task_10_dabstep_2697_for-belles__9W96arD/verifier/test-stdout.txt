@@ -1,0 +1,56 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 2 items
+
+../tests/test_outputs.py .F                                              [100%]
+
+=================================== FAILURES ===================================
+_____________________________ test_answer_matches ______________________________
+
+    def test_answer_matches():
+        pred = _read_output()
+        if ANSWER_MODE == "number":
+            try:
+                pred_num = float(pred.replace(",", "").replace("EUR", "").strip())
+                truth_num = float(str(GROUND_TRUTH).replace(",", "").strip())
+            except ValueError as e:
+                raise AssertionError(
+                    f"Expected a numeric answer; got {pred!r}. ({e})"
+                )
+            tol = NUM_TOL
+            if tol is None:
+                tol = abs(truth_num) * 1e-3 if truth_num else 1e-6
+            assert abs(pred_num - truth_num) <= tol, (
+                f"Predicted {pred_num}, expected {truth_num} +/- {tol:.6g}"
+            )
+        elif ANSWER_MODE == "list":
+            # Normalise as set of trimmed tokens; case-insensitive
+            def to_set(s):
+                return set(t.strip().lower() for t in s.split(",") if t.strip())
+            pred_set = to_set(pred)
+            truth_set = to_set(str(GROUND_TRUTH))
+            assert pred_set == truth_set, (
+                f"List mismatch: extra={sorted(pred_set - truth_set)[:10]}, "
+                f"missing={sorted(truth_set - pred_set)[:10]}, "
+                f"|pred|={len(pred_set)}, |truth|={len(truth_set)}"
+            )
+        else:
+            pred_n = pred.lower()
+            truth_n = _normalise(str(GROUND_TRUTH)).lower()
+>           assert pred_n == truth_n, (
+                f"Predicted {pred!r}, expected {GROUND_TRUTH!r}"
+            )
+E           AssertionError: Predicted 'B:71.58', expected 'E:13.57'
+E           assert 'b:71.58' == 'e:13.57'
+E             
+E             - e:13.57
+E             + b:71.58
+
+/tests/test_outputs.py:64: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED ../tests/test_outputs.py::test_file_exists
+FAILED ../tests/test_outputs.py::test_answer_matches - AssertionError: Predic...
+========================= 1 failed, 1 passed in 0.03s ==========================

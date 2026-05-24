@@ -1,0 +1,66 @@
+{
+    "schema_version": 1,
+    "created_at": "2026-05-17T22:02:02.657803Z",
+    "harbor": {
+        "version": "0.7.0",
+        "is_editable": false
+    },
+    "invocation": [
+        "C:\\Users\\timot\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\harbor",
+        "run",
+        "-p",
+        "samples/task_05_nhis_chronic_pain_test",
+        "-a",
+        "oracle",
+        "-o",
+        "jobs",
+        "--job-name",
+        "task_05_oracle_v3",
+        "-n",
+        "1",
+        "-y",
+        "-q"
+    ],
+    "n_concurrent_trials": 1,
+    "retry": {
+        "max_retries": 0,
+        "exclude_exceptions": [
+            "VerifierTimeoutError",
+            "RewardFileNotFoundError",
+            "RewardFileEmptyError",
+            "VerifierOutputParseError",
+            "AgentTimeoutError"
+        ],
+        "wait_multiplier": 1.0,
+        "min_wait_sec": 1.0,
+        "max_wait_sec": 60.0
+    },
+    "trials": [
+        {
+            "task": {
+                "name": "task_05_nhis_chronic_pain_test",
+                "type": "local",
+                "digest": "sha256:fff68fb00f83f49559aec5e5c04c5f217815171b250813907b1df823c65c11b0",
+                "path": "samples\\task_05_nhis_chronic_pain_test"
+            },
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "oracle",
+                "kwargs": {},
+                "env": {}
+            },
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "suppress_override_warnings": false,
+                "env": {},
+                "kwargs": {}
+            },
+            "verifier": {
+                "env": {},
+                "disable": false
+            }
+        }
+    ]
+}

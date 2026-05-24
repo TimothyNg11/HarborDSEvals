@@ -1,0 +1,22 @@
+Skipping image OS validation for hb__abundant-dabstep-original-13-fee-ids-nonzero: docker inspect returned 1
+Running command: apt-get update && apt-get install -y curl
+Command outputs captured
+Running command: set -euo pipefail; curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash && export NVM_DIR="$HOME/.nvm" && \. "$NVM_DIR/nvm.sh" || true && command -v nvm &>/dev/null || { echo 'Error: NVM failed to load' >&2; exit 1; } && nvm install 22 && npm -v && npm install -g @google/gemini-cli@latest
+Command failed
+Trial task_13_dabstep_orig_fee_ids_non__CNPupMo failed: Command failed (exit 137): set -euo pipefail; curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash && export NVM_DIR="$HOME/.nvm" && \. "$NVM_DIR/nvm.sh" || true && command -v nvm &>/dev/null || { echo 'Error: NVM failed to load' >&2; exit 1; } && nvm install 22 && npm -v && npm install -g @google/gemini-cli@latest
+stdout:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 16631  100 16631    0     0   192k      0 --:--:-- --:--:-- --:--:--  191k
+=> Downloading nvm as script to '/root/.nvm'
+
+=> Appending nvm source string to /root/.bashrc
+=> Appending bash_completion source string to /root/.bashrc
+=> Close and reopen your terminal to start using nvm or run the following to use it now:
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+Downloading and installing node v22.22.3...
+Downloading https://nodejs.org/dist/v22.22.3/node-v22.22.3-linux-x64.tar.gz...
+                                         ... [truncated]
+stderr: None

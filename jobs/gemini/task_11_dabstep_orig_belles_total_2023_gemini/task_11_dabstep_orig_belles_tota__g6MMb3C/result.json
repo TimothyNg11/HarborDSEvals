@@ -1,0 +1,105 @@
+{
+    "id": "69122369-bff4-44c7-acd2-fd32917ba971",
+    "task_name": "abundant/dabstep-original-11-belles-total",
+    "trial_name": "task_11_dabstep_orig_belles_tota__g6MMb3C",
+    "trial_uri": "file:///C:/Users/timot/HarborDSEvals/jobs/gemini/task_11_dabstep_orig_belles_total_2023_gemini/task_11_dabstep_orig_belles_tota__g6MMb3C",
+    "task_id": {
+        "path": "samples\\task_11_dabstep_orig_belles_total_2023"
+    },
+    "source": null,
+    "task_checksum": "55b5c8e87030a40b398d78a0a67b2c821040e296db42e213276da83f5e5ec805",
+    "config": {
+        "task": {
+            "path": "samples\\task_11_dabstep_orig_belles_total_2023",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "task_11_dabstep_orig_belles_tota__g6MMb3C",
+        "trials_dir": "jobs\\gemini\\task_11_dabstep_orig_belles_total_2023_gemini",
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "gemini-cli",
+            "import_path": null,
+            "model_name": "google/gemini-3-flash-preview",
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "kwargs": {},
+            "env": {
+                "GEMINI_API_KEY": "AIza****obg"
+            }
+        },
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": false,
+            "delete": true,
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "suppress_override_warnings": false,
+            "mounts": null,
+            "env": {},
+            "kwargs": {}
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "env": {},
+            "disable": false
+        },
+        "artifacts": [],
+        "job_id": "6402ac92-b5b1-40c3-aefa-ce56e603ba77"
+    },
+    "agent_info": {
+        "name": "gemini-cli",
+        "version": "0.42.0",
+        "model_info": {
+            "name": "gemini-3-flash-preview",
+            "provider": "google"
+        }
+    },
+    "agent_result": {
+        "n_input_tokens": 1484802,
+        "n_cache_tokens": 1233859,
+        "n_output_tokens": 21874,
+        "cost_usd": 0.25278645,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 0.0
+        }
+    },
+    "exception_info": null,
+    "started_at": "2026-05-18T02:20:59.874718Z",
+    "finished_at": "2026-05-18T02:26:07.314051Z",
+    "environment_setup": {
+        "started_at": "2026-05-18T02:20:59.913477Z",
+        "finished_at": "2026-05-18T02:21:04.607732Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-05-18T02:21:04.607745Z",
+        "finished_at": "2026-05-18T02:21:32.233064Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-05-18T02:21:32.233106Z",
+        "finished_at": "2026-05-18T02:26:03.877909Z"
+    },
+    "verifier": {
+        "started_at": "2026-05-18T02:26:03.884522Z",
+        "finished_at": "2026-05-18T02:26:05.059991Z"
+    },
+    "step_results": null
+}

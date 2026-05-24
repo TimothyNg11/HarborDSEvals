@@ -1,0 +1,48 @@
+schema_version = "1.2"
+
+artifacts = []
+
+[task]
+name = "abundant/asfin-revenue-breakdown"
+description = "Compute the 4-way composition of state-and-local general revenue from the 2021 Census ASLGF summary table. Requires correct row selection from a wide multi-state spreadsheet plus reconciliation against a PDF brief."
+keywords = ["census", "state-finance", "compositional-analysis", "multi-modal"]
+
+[[task.authors]]
+name = "Abundant Research Eval"
+email = "takehome@abundant.ai"
+
+[metadata]
+author_name = "Abundant Research Eval"
+author_email = "takehome@abundant.ai"
+difficulty = "hard"
+category = "data_science"
+tags = ["statistics", "compositional", "xlsx-parsing", "pdf-reading"]
+expert_time_estimate_min = 45.0
+junior_time_estimate_min = 120.0
+survey = "ASLGF (ASFIN)"
+year_cycle = "2021"
+ground_truth_source = "Census 2021 ASLGF Table 1, US state-and-local totals"
+difficulty_axis = "documentation_pressure+xlsx_layout"
+expected_failure_modes = ["wrong_revenue_total", "include_utility_or_trust", "row_alignment_off_by_one"]
+
+[verifier]
+timeout_sec = 60.0
+
+[verifier.env]
+
+[agent]
+timeout_sec = 1200.0
+
+[environment]
+build_timeout_sec = 600.0
+os = "linux"
+cpus = 2
+memory_mb = 2048
+storage_mb = 4096
+gpus = 0
+allow_internet = true
+mcp_servers = []
+
+[environment.env]
+
+[solution.env]

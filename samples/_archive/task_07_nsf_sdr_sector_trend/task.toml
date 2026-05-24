@@ -1,0 +1,48 @@
+schema_version = "1.2"
+
+artifacts = []
+
+[task]
+name = "abundant/nsf-sdr-sector-trend"
+description = "Compute the three-way sector breakdown (academia, industry, government) of employed U.S. doctorate-holders from NSF SDR 2023. The categorization definitions live in a chart, not in the data file."
+keywords = ["nsf", "doctorate-recipients", "multi-modal-chart"]
+
+[[task.authors]]
+name = "Abundant Research Eval"
+email = "takehome@abundant.ai"
+
+[metadata]
+author_name = "Abundant Research Eval"
+author_email = "takehome@abundant.ai"
+difficulty = "hard"
+category = "data_science"
+tags = ["statistics", "categorical-mapping", "chart-grounded"]
+expert_time_estimate_min = 30.0
+junior_time_estimate_min = 75.0
+survey = "NSF SDR"
+year_cycle = "2023"
+ground_truth_source = "NSF NCSES 25-321, Table 12-1 (employment by sector)"
+difficulty_axis = "multi_modal_chart"
+expected_failure_modes = ["ignore_chart_definitions", "wrong_category_mapping", "list_ordering"]
+
+[verifier]
+timeout_sec = 60.0
+
+[verifier.env]
+
+[agent]
+timeout_sec = 900.0
+
+[environment]
+build_timeout_sec = 600.0
+os = "linux"
+cpus = 2
+memory_mb = 2048
+storage_mb = 4096
+gpus = 0
+allow_internet = true
+mcp_servers = []
+
+[environment.env]
+
+[solution.env]

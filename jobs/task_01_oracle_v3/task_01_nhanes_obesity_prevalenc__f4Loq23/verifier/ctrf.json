@@ -1,0 +1,74 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 6,
+            "passed": 6,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1779055788.1993265,
+            "stop": 1779055788.2330182
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_required_keys",
+                "status": "passed",
+                "duration": 0.000762751998991007,
+                "start": 1779055788.2208998,
+                "stop": 1779055788.224991,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_point_value",
+                "status": "passed",
+                "duration": 0.0006406309985322878,
+                "start": 1779055788.2252822,
+                "stop": 1779055788.2274094,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_lower_bound_in_range",
+                "status": "passed",
+                "duration": 0.00047098499635467306,
+                "start": 1779055788.2277002,
+                "stop": 1779055788.228786,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_upper_bound_in_range",
+                "status": "passed",
+                "duration": 0.00038708300235157367,
+                "start": 1779055788.228993,
+                "stop": 1779055788.2300608,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_ci_brackets_point",
+                "status": "passed",
+                "duration": 0.0003899259991158033,
+                "start": 1779055788.2302413,
+                "stop": 1779055788.2312932,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_ci_width_sufficient",
+                "status": "passed",
+                "duration": 0.00035221499820181634,
+                "start": 1779055788.2314596,
+                "stop": 1779055788.2324107,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            }
+        ]
+    }
+}

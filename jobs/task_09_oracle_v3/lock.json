@@ -1,0 +1,66 @@
+{
+    "schema_version": 1,
+    "created_at": "2026-05-17T22:12:10.990427Z",
+    "harbor": {
+        "version": "0.7.0",
+        "is_editable": false
+    },
+    "invocation": [
+        "C:\\Users\\timot\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\harbor",
+        "run",
+        "-p",
+        "samples/task_09_nhanes_dietary_weights",
+        "-a",
+        "oracle",
+        "-o",
+        "jobs",
+        "--job-name",
+        "task_09_oracle_v3",
+        "-n",
+        "1",
+        "-y",
+        "-q"
+    ],
+    "n_concurrent_trials": 1,
+    "retry": {
+        "max_retries": 0,
+        "exclude_exceptions": [
+            "VerifierOutputParseError",
+            "RewardFileNotFoundError",
+            "RewardFileEmptyError",
+            "AgentTimeoutError",
+            "VerifierTimeoutError"
+        ],
+        "wait_multiplier": 1.0,
+        "min_wait_sec": 1.0,
+        "max_wait_sec": 60.0
+    },
+    "trials": [
+        {
+            "task": {
+                "name": "task_09_nhanes_dietary_weights",
+                "type": "local",
+                "digest": "sha256:b7284d5ede73f610ef512a685bb0f1ecf8c45d05b70979233a78373e4a0a5229",
+                "path": "samples\\task_09_nhanes_dietary_weights"
+            },
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "oracle",
+                "kwargs": {},
+                "env": {}
+            },
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "suppress_override_warnings": false,
+                "env": {},
+                "kwargs": {}
+            },
+            "verifier": {
+                "env": {},
+                "disable": false
+            }
+        }
+    ]
+}

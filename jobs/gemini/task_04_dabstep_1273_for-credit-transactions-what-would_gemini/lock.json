@@ -1,0 +1,133 @@
+{
+    "schema_version": 1,
+    "created_at": "2026-05-17T23:44:02.054509Z",
+    "harbor": {
+        "version": "0.7.0",
+        "is_editable": false
+    },
+    "invocation": [
+        "C:\\Users\\timot\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\harbor",
+        "run",
+        "-p",
+        "samples/task_04_dabstep_1273_for-credit-transactions-what-would",
+        "-a",
+        "gemini-cli",
+        "-m",
+        "google/gemini-3-flash-preview",
+        "--ae",
+        "GEMINI_API_KEY=${GEMINI_API_KEY}",
+        "-o",
+        "jobs/gemini",
+        "--job-name",
+        "task_04_dabstep_1273_for-credit-transactions-what-would_gemini",
+        "-k",
+        "3",
+        "-n",
+        "2",
+        "-y",
+        "-q"
+    ],
+    "n_concurrent_trials": 2,
+    "retry": {
+        "max_retries": 0,
+        "exclude_exceptions": [
+            "AgentTimeoutError",
+            "VerifierTimeoutError",
+            "RewardFileEmptyError",
+            "RewardFileNotFoundError",
+            "VerifierOutputParseError"
+        ],
+        "wait_multiplier": 1.0,
+        "min_wait_sec": 1.0,
+        "max_wait_sec": 60.0
+    },
+    "trials": [
+        {
+            "task": {
+                "name": "task_04_dabstep_1273_for-credit-transactions-what-would",
+                "type": "local",
+                "digest": "sha256:5dd0c2fb73e3abb763600a89757bd210921d3c02fa0ced00cd01be11a613895d",
+                "path": "samples\\task_04_dabstep_1273_for-credit-transactions-what-would"
+            },
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "gemini-cli",
+                "model_name": "google/gemini-3-flash-preview",
+                "kwargs": {},
+                "env": {
+                    "GEMINI_API_KEY": "${GEMINI_API_KEY}"
+                }
+            },
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "suppress_override_warnings": false,
+                "env": {},
+                "kwargs": {}
+            },
+            "verifier": {
+                "env": {},
+                "disable": false
+            }
+        },
+        {
+            "task": {
+                "name": "task_04_dabstep_1273_for-credit-transactions-what-would",
+                "type": "local",
+                "digest": "sha256:5dd0c2fb73e3abb763600a89757bd210921d3c02fa0ced00cd01be11a613895d",
+                "path": "samples\\task_04_dabstep_1273_for-credit-transactions-what-would"
+            },
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "gemini-cli",
+                "model_name": "google/gemini-3-flash-preview",
+                "kwargs": {},
+                "env": {
+                    "GEMINI_API_KEY": "${GEMINI_API_KEY}"
+                }
+            },
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "suppress_override_warnings": false,
+                "env": {},
+                "kwargs": {}
+            },
+            "verifier": {
+                "env": {},
+                "disable": false
+            }
+        },
+        {
+            "task": {
+                "name": "task_04_dabstep_1273_for-credit-transactions-what-would",
+                "type": "local",
+                "digest": "sha256:5dd0c2fb73e3abb763600a89757bd210921d3c02fa0ced00cd01be11a613895d",
+                "path": "samples\\task_04_dabstep_1273_for-credit-transactions-what-would"
+            },
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "gemini-cli",
+                "model_name": "google/gemini-3-flash-preview",
+                "kwargs": {},
+                "env": {
+                    "GEMINI_API_KEY": "${GEMINI_API_KEY}"
+                }
+            },
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "suppress_override_warnings": false,
+                "env": {},
+                "kwargs": {}
+            },
+            "verifier": {
+                "env": {},
+                "disable": false
+            }
+        }
+    ]
+}

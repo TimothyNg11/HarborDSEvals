@@ -1,0 +1,48 @@
+schema_version = "1.2"
+
+artifacts = []
+
+[task]
+name = "abundant/cps-median-income"
+description = "Extract 2023 median household income from CPS-ASEC Table A-1. Requires reading a multi-row-header XLSX layout."
+keywords = ["cps", "census", "income", "xlsx-layout"]
+
+[[task.authors]]
+name = "Abundant Research Eval"
+email = "takehome@abundant.ai"
+
+[metadata]
+author_name = "Abundant Research Eval"
+author_email = "takehome@abundant.ai"
+difficulty = "easy"
+category = "data_science"
+tags = ["statistics", "census-data", "xlsx-parsing"]
+expert_time_estimate_min = 10.0
+junior_time_estimate_min = 30.0
+survey = "CPS-ASEC"
+year_cycle = "2023"
+ground_truth_source = "P60-282 Table A-1 (2024 release)"
+difficulty_axis = "xlsx_layout"
+expected_failure_modes = ["wrong_year_column", "merged_cell_misread", "took_2022_value"]
+
+[verifier]
+timeout_sec = 60.0
+
+[verifier.env]
+
+[agent]
+timeout_sec = 600.0
+
+[environment]
+build_timeout_sec = 600.0
+os = "linux"
+cpus = 2
+memory_mb = 2048
+storage_mb = 4096
+gpus = 0
+allow_internet = true
+mcp_servers = []
+
+[environment.env]
+
+[solution.env]

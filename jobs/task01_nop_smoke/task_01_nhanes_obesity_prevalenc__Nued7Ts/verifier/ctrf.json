@@ -1,0 +1,56 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 0,
+            "failed": 3,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1779004842.0427496,
+            "stop": 1779004842.064076
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_output_file_exists",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0006090700007916894,
+                "start": 1779004842.0495014,
+                "stop": 1779004842.0587626,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "def test_output_file_exists():\n>       assert os.path.exists(RESULT_FILE), (\n            f\"Required output file {RESULT_FILE} was not created by the agent.\"\n        )\nE       AssertionError: Required output file /output/result.txt was not created by the agent.\nE       assert False\nE        +  where False = <function exists at 0x7df5525a3420>('/output/result.txt')\nE        +    where <function exists at 0x7df5525a3420> = <module 'posixpath' (frozen)>.exists\nE        +      where <module 'posixpath' (frozen)> = os.path\n\n/tests/test_outputs.py:18: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_outputs.py::test_output_parses_as_number",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0003653759995358996,
+                "start": 1779004842.0590641,
+                "stop": 1779004842.061131,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "def test_output_parses_as_number():\n>       with open(RESULT_FILE) as f:\n             ^^^^^^^^^^^^^^^^^\nE       FileNotFoundError: [Errno 2] No such file or directory: '/output/result.txt'\n\n/tests/test_outputs.py:24: FileNotFoundError",
+                "message": "The test failed in the call phase"
+            },
+            {
+                "name": "test_outputs.py::test_value_within_tolerance",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.00025261300015699817,
+                "start": 1779004842.0612774,
+                "stop": 1779004842.0631642,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "def test_value_within_tolerance():\n>       with open(RESULT_FILE) as f:\n             ^^^^^^^^^^^^^^^^^\nE       FileNotFoundError: [Errno 2] No such file or directory: '/output/result.txt'\n\n/tests/test_outputs.py:35: FileNotFoundError",
+                "message": "The test failed in the call phase"
+            }
+        ]
+    }
+}

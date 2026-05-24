@@ -1,0 +1,43 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 3 items
+
+../tests/test_outputs.py FFF                                             [100%]
+
+=================================== FAILURES ===================================
+___________________________ test_output_file_exists ____________________________
+
+    def test_output_file_exists():
+>       assert os.path.exists(RESULT_FILE), (
+            f"Required output file {RESULT_FILE} was not created by the agent."
+        )
+E       AssertionError: Required output file /output/result.txt was not created by the agent.
+E       assert False
+E        +  where False = <function exists at 0x7df5525a3420>('/output/result.txt')
+E        +    where <function exists at 0x7df5525a3420> = <module 'posixpath' (frozen)>.exists
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+/tests/test_outputs.py:18: AssertionError
+_________________________ test_output_parses_as_number _________________________
+
+    def test_output_parses_as_number():
+>       with open(RESULT_FILE) as f:
+             ^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/output/result.txt'
+
+/tests/test_outputs.py:24: FileNotFoundError
+_________________________ test_value_within_tolerance __________________________
+
+    def test_value_within_tolerance():
+>       with open(RESULT_FILE) as f:
+             ^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/output/result.txt'
+
+/tests/test_outputs.py:35: FileNotFoundError
+=========================== short test summary info ============================
+FAILED ../tests/test_outputs.py::test_output_file_exists - AssertionError: Re...
+FAILED ../tests/test_outputs.py::test_output_parses_as_number - FileNotFoundE...
+FAILED ../tests/test_outputs.py::test_value_within_tolerance - FileNotFoundEr...
+============================== 3 failed in 0.03s ===============================

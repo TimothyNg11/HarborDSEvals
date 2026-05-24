@@ -1,0 +1,39 @@
+{
+    "id": "860fc8cb-9947-4060-a8a1-56afb5b292e7",
+    "started_at": "2026-05-17T19:02:47.474708",
+    "updated_at": "2026-05-17T19:03:03.706907",
+    "finished_at": "2026-05-17T19:03:03.706907",
+    "n_total_trials": 1,
+    "stats": {
+        "n_completed_trials": 1,
+        "n_errored_trials": 0,
+        "n_running_trials": 0,
+        "n_pending_trials": 0,
+        "n_cancelled_trials": 0,
+        "n_retries": 0,
+        "evals": {
+            "nop__adhoc": {
+                "n_trials": 1,
+                "n_errors": 0,
+                "metrics": [
+                    {
+                        "mean": 0.0
+                    }
+                ],
+                "pass_at_k": {},
+                "reward_stats": {
+                    "reward": {
+                        "0.0": [
+                            "task_03_dabstep_70_is-martinis-f__TYuzoNZ"
+                        ]
+                    }
+                },
+                "exception_stats": {}
+            }
+        },
+        "n_input_tokens": null,
+        "n_cache_tokens": null,
+        "n_output_tokens": null,
+        "cost_usd": null
+    }
+}

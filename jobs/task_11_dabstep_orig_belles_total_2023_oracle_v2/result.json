@@ -1,0 +1,39 @@
+{
+    "id": "4276bf1d-734b-468a-8479-35f6f9278061",
+    "started_at": "2026-05-17T22:14:53.882376",
+    "updated_at": "2026-05-17T22:15:08.765002",
+    "finished_at": "2026-05-17T22:15:08.765002",
+    "n_total_trials": 1,
+    "stats": {
+        "n_completed_trials": 1,
+        "n_errored_trials": 0,
+        "n_running_trials": 0,
+        "n_pending_trials": 0,
+        "n_cancelled_trials": 0,
+        "n_retries": 0,
+        "evals": {
+            "oracle__adhoc": {
+                "n_trials": 1,
+                "n_errors": 0,
+                "metrics": [
+                    {
+                        "mean": 1.0
+                    }
+                ],
+                "pass_at_k": {},
+                "reward_stats": {
+                    "reward": {
+                        "1.0": [
+                            "task_11_dabstep_orig_belles_tota__RMtpm7p"
+                        ]
+                    }
+                },
+                "exception_stats": {}
+            }
+        },
+        "n_input_tokens": null,
+        "n_cache_tokens": null,
+        "n_output_tokens": null,
+        "cost_usd": null
+    }
+}

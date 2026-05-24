@@ -1,0 +1,100 @@
+{
+    "id": "f9847fda-2b78-44dd-b6a4-0142e409ed14",
+    "task_name": "abundant/nhanes-obesity-prevalence",
+    "trial_name": "task_01_nhanes_obesity_prevalenc__Nued7Ts",
+    "trial_uri": "file:///C:/Users/timot/HarborDSEvals/jobs/task01_nop_smoke/task_01_nhanes_obesity_prevalenc__Nued7Ts",
+    "task_id": {
+        "path": "samples\\task_01_nhanes_obesity_prevalence"
+    },
+    "source": null,
+    "task_checksum": "c3f1c47e1e083d6ea326454e6204c5573b0736660379b470bb275c757f94111c",
+    "config": {
+        "task": {
+            "path": "samples\\task_01_nhanes_obesity_prevalence",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "task_01_nhanes_obesity_prevalenc__Nued7Ts",
+        "trials_dir": "jobs\\task01_nop_smoke",
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "nop",
+            "import_path": null,
+            "model_name": null,
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "kwargs": {},
+            "env": {}
+        },
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": false,
+            "delete": true,
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "suppress_override_warnings": false,
+            "mounts": null,
+            "env": {},
+            "kwargs": {}
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "env": {},
+            "disable": false
+        },
+        "artifacts": [],
+        "job_id": "20d0a251-a306-4925-9f21-e13f9f8676ff"
+    },
+    "agent_info": {
+        "name": "nop",
+        "version": "1.0.0",
+        "model_info": null
+    },
+    "agent_result": {
+        "n_input_tokens": null,
+        "n_cache_tokens": null,
+        "n_output_tokens": null,
+        "cost_usd": null,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 0.0
+        }
+    },
+    "exception_info": null,
+    "started_at": "2026-05-17T08:00:34.027247Z",
+    "finished_at": "2026-05-17T08:00:43.805523Z",
+    "environment_setup": {
+        "started_at": "2026-05-17T08:00:34.071416Z",
+        "finished_at": "2026-05-17T08:00:40.877206Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-05-17T08:00:40.877242Z",
+        "finished_at": "2026-05-17T08:00:40.877283Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-05-17T08:00:40.877331Z",
+        "finished_at": "2026-05-17T08:00:40.877354Z"
+    },
+    "verifier": {
+        "started_at": "2026-05-17T08:00:40.877479Z",
+        "finished_at": "2026-05-17T08:00:42.143294Z"
+    },
+    "step_results": null
+}

@@ -1,0 +1,47 @@
+{
+    "id": "522c7832-ea79-4d38-affb-864f60262fbc",
+    "started_at": "2026-05-17T20:16:16.845067",
+    "updated_at": "2026-05-17T20:47:01.104534",
+    "finished_at": "2026-05-17T20:47:01.104534",
+    "n_total_trials": 3,
+    "stats": {
+        "n_completed_trials": 3,
+        "n_errored_trials": 1,
+        "n_running_trials": 0,
+        "n_pending_trials": 0,
+        "n_cancelled_trials": 0,
+        "n_retries": 0,
+        "evals": {
+            "gemini-cli__gemini-3-flash-preview__adhoc": {
+                "n_trials": 3,
+                "n_errors": 1,
+                "metrics": [
+                    {
+                        "mean": 0.0
+                    }
+                ],
+                "pass_at_k": {
+                    "2": 0.0
+                },
+                "reward_stats": {
+                    "reward": {
+                        "0.0": [
+                            "task_06_dabstep_1464_what-is-the__vYGhY5W",
+                            "task_06_dabstep_1464_what-is-the__kQ9xmGZ",
+                            "task_06_dabstep_1464_what-is-the__D9WmEjc"
+                        ]
+                    }
+                },
+                "exception_stats": {
+                    "AgentTimeoutError": [
+                        "task_06_dabstep_1464_what-is-the__kQ9xmGZ"
+                    ]
+                }
+            }
+        },
+        "n_input_tokens": 17095963,
+        "n_cache_tokens": 15259386,
+        "n_output_tokens": 581373,
+        "cost_usd": 3.4253768
+    }
+}

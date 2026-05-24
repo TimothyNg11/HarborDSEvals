@@ -1,0 +1,48 @@
+schema_version = "1.2"
+
+artifacts = []
+
+[task]
+name = "abundant/nhanes-obesity-with-ci"
+description = "Compute weighted adult obesity prevalence and 95 percent confidence interval from NHANES. Requires design-adjusted variance using PSU and stratum identifiers."
+keywords = ["nhanes", "survey", "statistics", "confidence-interval"]
+
+[[task.authors]]
+name = "Abundant Research Eval"
+email = "takehome@abundant.ai"
+
+[metadata]
+author_name = "Abundant Research Eval"
+author_email = "takehome@abundant.ai"
+difficulty = "medium"
+category = "data_science"
+tags = ["statistics", "survey-data", "confidence-interval", "design-effect"]
+expert_time_estimate_min = 25.0
+junior_time_estimate_min = 60.0
+survey = "NHANES"
+year_cycle = "August 2021 - August 2023"
+ground_truth_source = "NCHS Data Brief No. 508, Table 1 (overall obesity prevalence with SE)"
+difficulty_axis = "inferential_statistics"
+expected_failure_modes = ["ignore_design_effect", "naive_binomial_ci", "wrong_weight"]
+
+[verifier]
+timeout_sec = 120.0
+
+[verifier.env]
+
+[agent]
+timeout_sec = 900.0
+
+[environment]
+build_timeout_sec = 600.0
+os = "linux"
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = true
+mcp_servers = []
+
+[environment.env]
+
+[solution.env]

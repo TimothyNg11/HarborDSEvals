@@ -1,0 +1,66 @@
+{
+    "schema_version": 1,
+    "created_at": "2026-05-17T23:02:47.545302Z",
+    "harbor": {
+        "version": "0.7.0",
+        "is_editable": false
+    },
+    "invocation": [
+        "C:\\Users\\timot\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\harbor",
+        "run",
+        "-p",
+        "samples/task_03_dabstep_70_is-martinis-fine-steakhouse-in/",
+        "-a",
+        "nop",
+        "-o",
+        "jobs",
+        "--job-name",
+        "task_03_dabstep_70_is-martinis-fine-steakhouse-in_nop",
+        "-n",
+        "1",
+        "-y",
+        "-q"
+    ],
+    "n_concurrent_trials": 1,
+    "retry": {
+        "max_retries": 0,
+        "exclude_exceptions": [
+            "VerifierTimeoutError",
+            "VerifierOutputParseError",
+            "RewardFileEmptyError",
+            "AgentTimeoutError",
+            "RewardFileNotFoundError"
+        ],
+        "wait_multiplier": 1.0,
+        "min_wait_sec": 1.0,
+        "max_wait_sec": 60.0
+    },
+    "trials": [
+        {
+            "task": {
+                "name": "task_03_dabstep_70_is-martinis-fine-steakhouse-in",
+                "type": "local",
+                "digest": "sha256:9a9077ff2807afb46dbe27577ad6e04a5b6258d125140af024b45a7563e798e7",
+                "path": "samples\\task_03_dabstep_70_is-martinis-fine-steakhouse-in"
+            },
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "nop",
+                "kwargs": {},
+                "env": {}
+            },
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "suppress_override_warnings": false,
+                "env": {},
+                "kwargs": {}
+            },
+            "verifier": {
+                "env": {},
+                "disable": false
+            }
+        }
+    ]
+}

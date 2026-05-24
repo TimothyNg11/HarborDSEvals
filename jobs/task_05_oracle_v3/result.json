@@ -1,0 +1,39 @@
+{
+    "id": "d6af76c3-869d-42b7-bcac-c9ae9903aeda",
+    "started_at": "2026-05-17T18:02:02.639580",
+    "updated_at": "2026-05-17T18:02:23.712279",
+    "finished_at": "2026-05-17T18:02:23.712279",
+    "n_total_trials": 1,
+    "stats": {
+        "n_completed_trials": 1,
+        "n_errored_trials": 0,
+        "n_running_trials": 0,
+        "n_pending_trials": 0,
+        "n_cancelled_trials": 0,
+        "n_retries": 0,
+        "evals": {
+            "oracle__adhoc": {
+                "n_trials": 1,
+                "n_errors": 0,
+                "metrics": [
+                    {
+                        "mean": 1.0
+                    }
+                ],
+                "pass_at_k": {},
+                "reward_stats": {
+                    "reward": {
+                        "1.0": [
+                            "task_05_nhis_chronic_pain_test__rP9bVcU"
+                        ]
+                    }
+                },
+                "exception_stats": {}
+            }
+        },
+        "n_input_tokens": null,
+        "n_cache_tokens": null,
+        "n_output_tokens": null,
+        "cost_usd": null
+    }
+}

@@ -1,0 +1,66 @@
+{
+    "schema_version": 1,
+    "created_at": "2026-05-18T02:14:54.000117Z",
+    "harbor": {
+        "version": "0.7.0",
+        "is_editable": false
+    },
+    "invocation": [
+        "C:\\Users\\timot\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\harbor",
+        "run",
+        "-p",
+        "samples/task_11_dabstep_orig_belles_total_2023",
+        "-a",
+        "oracle",
+        "-o",
+        "jobs",
+        "--job-name",
+        "task_11_dabstep_orig_belles_total_2023_oracle_v2",
+        "-n",
+        "1",
+        "-y",
+        "-q"
+    ],
+    "n_concurrent_trials": 1,
+    "retry": {
+        "max_retries": 0,
+        "exclude_exceptions": [
+            "VerifierOutputParseError",
+            "VerifierTimeoutError",
+            "RewardFileNotFoundError",
+            "AgentTimeoutError",
+            "RewardFileEmptyError"
+        ],
+        "wait_multiplier": 1.0,
+        "min_wait_sec": 1.0,
+        "max_wait_sec": 60.0
+    },
+    "trials": [
+        {
+            "task": {
+                "name": "task_11_dabstep_orig_belles_total_2023",
+                "type": "local",
+                "digest": "sha256:e60acc6e81ed2cd626e61abd24b58645cf9f4b9f271e891f2ee3aed95427aaeb",
+                "path": "samples\\task_11_dabstep_orig_belles_total_2023"
+            },
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "oracle",
+                "kwargs": {},
+                "env": {}
+            },
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "suppress_override_warnings": false,
+                "env": {},
+                "kwargs": {}
+            },
+            "verifier": {
+                "env": {},
+                "disable": false
+            }
+        }
+    ]
+}

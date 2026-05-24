@@ -1,0 +1,66 @@
+{
+    "schema_version": 1,
+    "created_at": "2026-05-17T23:04:18.837831Z",
+    "harbor": {
+        "version": "0.7.0",
+        "is_editable": false
+    },
+    "invocation": [
+        "C:\\Users\\timot\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\harbor",
+        "run",
+        "-p",
+        "samples/task_05_dabstep_1305_for-account-type-h-and/",
+        "-a",
+        "nop",
+        "-o",
+        "jobs",
+        "--job-name",
+        "task_05_dabstep_1305_for-account-type-h-and_nop",
+        "-n",
+        "1",
+        "-y",
+        "-q"
+    ],
+    "n_concurrent_trials": 1,
+    "retry": {
+        "max_retries": 0,
+        "exclude_exceptions": [
+            "VerifierTimeoutError",
+            "VerifierOutputParseError",
+            "AgentTimeoutError",
+            "RewardFileEmptyError",
+            "RewardFileNotFoundError"
+        ],
+        "wait_multiplier": 1.0,
+        "min_wait_sec": 1.0,
+        "max_wait_sec": 60.0
+    },
+    "trials": [
+        {
+            "task": {
+                "name": "task_05_dabstep_1305_for-account-type-h-and",
+                "type": "local",
+                "digest": "sha256:03ee134995d2813852c325b0f46325cd01cbabb86dcc10a8c40a64a04a1f0081",
+                "path": "samples\\task_05_dabstep_1305_for-account-type-h-and"
+            },
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "nop",
+                "kwargs": {},
+                "env": {}
+            },
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "suppress_override_warnings": false,
+                "env": {},
+                "kwargs": {}
+            },
+            "verifier": {
+                "env": {},
+                "disable": false
+            }
+        }
+    ]
+}

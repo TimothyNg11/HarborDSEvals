@@ -1,0 +1,48 @@
+schema_version = "1.2"
+
+artifacts = []
+
+[task]
+name = "abundant/nhanes-dietary-weights"
+description = "Compute mean daily energy intake for adult women by age from NHANES dietary recall. Requires using the day-1 dietary weight WTDRD1, not the exam weight WTMEC2YR — a methodology screenshot in /data/docs/ explains which weight applies."
+keywords = ["nhanes", "dietary", "weight-selection", "multi-modal-screenshot"]
+
+[[task.authors]]
+name = "Abundant Research Eval"
+email = "takehome@abundant.ai"
+
+[metadata]
+author_name = "Abundant Research Eval"
+author_email = "takehome@abundant.ai"
+difficulty = "hard"
+category = "data_science"
+tags = ["statistics", "weight-selection", "screenshot-grounded"]
+expert_time_estimate_min = 40.0
+junior_time_estimate_min = 110.0
+survey = "NHANES (dietary day 1)"
+year_cycle = "August 2021 - August 2023"
+ground_truth_source = "Computed from DR1TOT_L using WTDRD1 weights"
+difficulty_axis = "multi_modal_screenshot+weight_selection"
+expected_failure_modes = ["used_WTMEC2YR_instead_of_WTDRD1", "ignored_DR1DRSTZ_reliability", "wrong_age_buckets"]
+
+[verifier]
+timeout_sec = 120.0
+
+[verifier.env]
+
+[agent]
+timeout_sec = 1200.0
+
+[environment]
+build_timeout_sec = 600.0
+os = "linux"
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = true
+mcp_servers = []
+
+[environment.env]
+
+[solution.env]

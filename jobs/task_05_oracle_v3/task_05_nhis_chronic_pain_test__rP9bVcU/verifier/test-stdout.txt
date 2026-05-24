@@ -1,0 +1,16 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 5 items
+
+../tests/test_outputs.py .....                                           [100%]
+
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED ../tests/test_outputs.py::test_required_keys
+PASSED ../tests/test_outputs.py::test_odds_ratio_value
+PASSED ../tests/test_outputs.py::test_or_greater_than_one
+PASSED ../tests/test_outputs.py::test_paf_value
+PASSED ../tests/test_outputs.py::test_paf_positive
+============================== 5 passed in 0.02s ===============================

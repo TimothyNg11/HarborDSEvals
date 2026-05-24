@@ -1,0 +1,28 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 2 items
+
+../tests/test_outputs.py .F                                              [100%]
+
+=================================== FAILURES ===================================
+_________________________ test_value_within_tolerance __________________________
+
+    def test_value_within_tolerance():
+        raw = _read().replace(",", "").replace("EUR", "").replace("+", "").strip()
+        pred = float(raw)
+        truth = float(GROUND_TRUTH)
+>       assert abs(pred - truth) <= TOL, (
+            f"Predicted {pred}, expected {truth} +/- {TOL}"
+        )
+E       AssertionError: Predicted 6764.614, expected 3914.3621 +/- 0.001
+E       assert 2850.2518999999998 <= 0.001
+E        +  where 2850.2518999999998 = abs((6764.614 - 3914.3621))
+
+/tests/test_outputs.py:25: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED ../tests/test_outputs.py::test_file_exists
+FAILED ../tests/test_outputs.py::test_value_within_tolerance - AssertionError...
+========================= 1 failed, 1 passed in 0.03s ==========================

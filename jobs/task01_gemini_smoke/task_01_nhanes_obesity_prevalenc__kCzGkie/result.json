@@ -1,0 +1,91 @@
+{
+    "id": "040d55e8-5d1f-43dc-951a-05d328aace4a",
+    "task_name": "abundant/nhanes-obesity-prevalence",
+    "trial_name": "task_01_nhanes_obesity_prevalenc__kCzGkie",
+    "trial_uri": "file:///C:/Users/timot/HarborDSEvals/jobs/task01_gemini_smoke/task_01_nhanes_obesity_prevalenc__kCzGkie",
+    "task_id": {
+        "path": "samples\\task_01_nhanes_obesity_prevalence"
+    },
+    "source": null,
+    "task_checksum": "c3f1c47e1e083d6ea326454e6204c5573b0736660379b470bb275c757f94111c",
+    "config": {
+        "task": {
+            "path": "samples\\task_01_nhanes_obesity_prevalence",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "task_01_nhanes_obesity_prevalenc__kCzGkie",
+        "trials_dir": "jobs\\task01_gemini_smoke",
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "gemini-cli",
+            "import_path": null,
+            "model_name": "gemini-3-flash-preview",
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "kwargs": {},
+            "env": {}
+        },
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": false,
+            "delete": true,
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "suppress_override_warnings": false,
+            "mounts": null,
+            "env": {},
+            "kwargs": {}
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "env": {},
+            "disable": false
+        },
+        "artifacts": [],
+        "job_id": "2304cc8c-9bf6-47b0-b513-76899533398f"
+    },
+    "agent_info": {
+        "name": "gemini-cli",
+        "version": "unknown",
+        "model_info": {
+            "name": "gemini-3-flash-preview",
+            "provider": null
+        }
+    },
+    "agent_result": null,
+    "verifier_result": null,
+    "exception_info": {
+        "exception_type": "NonZeroAgentExitCodeError",
+        "exception_message": "Command failed (exit 100): apt-get update && apt-get install -y curl\nstdout: Ign:1 http://deb.debian.org/debian trixie InRelease\nIgn:2 http://deb.debian.org/debian trixie-updates InRelease\nIgn:3 http://deb.debian.org/debian-security trixie-security InRelease\nIgn:3 http://deb.debian.org/debian-security trixie-security InRelease\nIgn:2 http://deb.debian.org/debian trixie-updates InRelease\nIgn:1 http://deb.debian.org/debian trixie InRelease\nIgn:1 http://deb.debian.org/debian trixie InRelease\nIgn:2 http://deb.debian.org/debian trixie-updates InRelease\nIgn:3 http://deb.debian.org/debian-security trixie-security InRelease\nErr:3 http://deb.debian.org/debian-security trixie-security InRelease\n  Temporary failure resolving 'deb.debian.org'\nErr:2 http://deb.debian.org/debian trixie-updates InRelease\n  Temporary failure resolving 'deb.debian.org'\nErr:1 http://deb.debian.org/debian trixie InRelease\n  Temporary failure resolving 'deb.debian.org'\nReading package lists...\nW: Failed to fetch http://deb.debian.org/debian/dists/trixie/InRelease  Temporary failure resolving 'deb.d ... [truncated]\nstderr: None",
+        "exception_traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\timot\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\harbor\\trial\\trial.py\", line 1255, in run\n    await self._setup_agent()\n  File \"C:\\Users\\timot\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\harbor\\trial\\trial.py\", line 372, in _setup_agent\n    await asyncio.wait_for(\n    ...<2 lines>...\n    )\n  File \"C:\\Users\\timot\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\asyncio\\tasks.py\", line 507, in wait_for\n    return await fut\n           ^^^^^^^^^\n  File \"C:\\Users\\timot\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\harbor\\agents\\installed\\base.py\", line 392, in setup\n    await self.install(environment)\n  File \"C:\\Users\\timot\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\harbor\\agents\\installed\\gemini_cli.py\", line 101, in install\n    await self.exec_as_root(\n    ...<3 lines>...\n    )\n  File \"C:\\Users\\timot\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\harbor\\agents\\installed\\base.py\", line 353, in exec_as_root\n    return await self._exec(\n           ^^^^^^^^^^^^^^^^^\n        environment, command, user=\"root\", env=env, cwd=cwd, timeout_sec=timeout_sec\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"C:\\Users\\timot\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\harbor\\agents\\installed\\base.py\", line 329, in _exec\n    raise NonZeroAgentExitCodeError(\n    ...<3 lines>...\n    )\nharbor.agents.installed.base.NonZeroAgentExitCodeError: Command failed (exit 100): apt-get update && apt-get install -y curl\nstdout: Ign:1 http://deb.debian.org/debian trixie InRelease\nIgn:2 http://deb.debian.org/debian trixie-updates InRelease\nIgn:3 http://deb.debian.org/debian-security trixie-security InRelease\nIgn:3 http://deb.debian.org/debian-security trixie-security InRelease\nIgn:2 http://deb.debian.org/debian trixie-updates InRelease\nIgn:1 http://deb.debian.org/debian trixie InRelease\nIgn:1 http://deb.debian.org/debian trixie InRelease\nIgn:2 http://deb.debian.org/debian trixie-updates InRelease\nIgn:3 http://deb.debian.org/debian-security trixie-security InRelease\nErr:3 http://deb.debian.org/debian-security trixie-security InRelease\n  Temporary failure resolving 'deb.debian.org'\nErr:2 http://deb.debian.org/debian trixie-updates InRelease\n  Temporary failure resolving 'deb.debian.org'\nErr:1 http://deb.debian.org/debian trixie InRelease\n  Temporary failure resolving 'deb.debian.org'\nReading package lists...\nW: Failed to fetch http://deb.debian.org/debian/dists/trixie/InRelease  Temporary failure resolving 'deb.d ... [truncated]\nstderr: None\n",
+        "occurred_at": "2026-05-17T04:19:56.456030"
+    },
+    "started_at": "2026-05-17T08:19:41.861987Z",
+    "finished_at": "2026-05-17T08:19:58.149122Z",
+    "environment_setup": {
+        "started_at": "2026-05-17T08:19:41.907082Z",
+        "finished_at": "2026-05-17T08:19:48.802055Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-05-17T08:19:48.802100Z",
+        "finished_at": "2026-05-17T08:19:56.406512Z"
+    },
+    "agent_execution": null,
+    "verifier": null,
+    "step_results": null
+}

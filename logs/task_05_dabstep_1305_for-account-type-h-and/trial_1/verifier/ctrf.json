@@ -1,0 +1,41 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 1,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1779063371.1399,
+            "stop": 1779063371.1588285
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_file_exists",
+                "status": "passed",
+                "duration": 0.0003337419948366005,
+                "start": 1779063371.1476357,
+                "stop": 1779063371.1486192,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_answer_matches",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0010373419972893316,
+                "start": 1779063371.1487496,
+                "stop": 1779063371.1582716,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "def test_answer_matches():\n        pred = _read_output()\n        if ANSWER_MODE == \"number\":\n            try:\n                pred_num = float(pred.replace(\",\", \"\").replace(\"EUR\", \"\").strip())\n                truth_num = float(str(GROUND_TRUTH).replace(\",\", \"\").strip())\n            except ValueError as e:\n                raise AssertionError(\n                    f\"Expected a numeric answer; got {pred!r}. ({e})\"\n                )\n            tol = NUM_TOL\n            if tol is None:\n                tol = abs(truth_num) * 1e-3 if truth_num else 1e-6\n>           assert abs(pred_num - truth_num) <= tol, (\n                f\"Predicted {pred_num}, expected {truth_num} +/- {tol:.6g}\"\nE               AssertionError: Predicted 0.167126, expected 0.123217 +/- 5e-06\nE               assert 0.043909000000000004 <= 4.9999999999999996e-06\nE                +  where 0.043909000000000004 = abs((0.167126 - 0.123217))\n\n/tests/test_outputs.py:47: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

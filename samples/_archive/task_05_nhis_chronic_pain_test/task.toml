@@ -1,0 +1,48 @@
+schema_version = "1.2"
+
+artifacts = []
+
+[task]
+name = "abundant/nhis-chronic-pain-test"
+description = "Compute weighted chronic pain prevalence from NHIS 2023 and run a one-sample hypothesis test against a 20 percent threshold."
+keywords = ["nhis", "survey", "hypothesis-test", "documentation-grounded"]
+
+[[task.authors]]
+name = "Abundant Research Eval"
+email = "takehome@abundant.ai"
+
+[metadata]
+author_name = "Abundant Research Eval"
+author_email = "takehome@abundant.ai"
+difficulty = "hard"
+category = "data_science"
+tags = ["statistics", "survey-data", "hypothesis-test", "documentation-pressure"]
+expert_time_estimate_min = 35.0
+junior_time_estimate_min = 90.0
+survey = "NHIS"
+year_cycle = "2023"
+ground_truth_source = "NHIS 2023 published estimate: 24.3% (95% CI 23.7-24.9)"
+difficulty_axis = "documentation_pressure+inferential"
+expected_failure_modes = ["wrong_pain_variable", "wrong_threshold_definition", "naive_se"]
+
+[verifier]
+timeout_sec = 120.0
+
+[verifier.env]
+
+[agent]
+timeout_sec = 1200.0
+
+[environment]
+build_timeout_sec = 600.0
+os = "linux"
+cpus = 2
+memory_mb = 4096
+storage_mb = 4096
+gpus = 0
+allow_internet = true
+mcp_servers = []
+
+[environment.env]
+
+[solution.env]

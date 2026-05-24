@@ -1,0 +1,44 @@
+Traceback (most recent call last):
+  File "C:\Users\timot\AppData\Local\Programs\Python\Python313\Lib\site-packages\harbor\trial\trial.py", line 1255, in run
+    await self._setup_agent()
+  File "C:\Users\timot\AppData\Local\Programs\Python\Python313\Lib\site-packages\harbor\trial\trial.py", line 372, in _setup_agent
+    await asyncio.wait_for(
+    ...<2 lines>...
+    )
+  File "C:\Users\timot\AppData\Local\Programs\Python\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\timot\AppData\Local\Programs\Python\Python313\Lib\site-packages\harbor\agents\installed\base.py", line 392, in setup
+    await self.install(environment)
+  File "C:\Users\timot\AppData\Local\Programs\Python\Python313\Lib\site-packages\harbor\agents\installed\gemini_cli.py", line 107, in install
+    await self.exec_as_agent(
+    ...<10 lines>...
+    )
+  File "C:\Users\timot\AppData\Local\Programs\Python\Python313\Lib\site-packages\harbor\agents\installed\base.py", line 366, in exec_as_agent
+    return await self._exec(
+           ^^^^^^^^^^^^^^^^^
+        environment, command, env=env, cwd=cwd, timeout_sec=timeout_sec
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\timot\AppData\Local\Programs\Python\Python313\Lib\site-packages\harbor\agents\installed\base.py", line 329, in _exec
+    raise NonZeroAgentExitCodeError(
+    ...<3 lines>...
+    )
+harbor.agents.installed.base.NonZeroAgentExitCodeError: Command failed (exit 137): set -euo pipefail; curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash && export NVM_DIR="$HOME/.nvm" && \. "$NVM_DIR/nvm.sh" || true && command -v nvm &>/dev/null || { echo 'Error: NVM failed to load' >&2; exit 1; } && nvm install 22 && npm -v && npm install -g @google/gemini-cli@latest
+stdout:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 16631  100 16631    0     0   105k      0 --:--:-- --:--:-- --:--:--  106k
+=> Downloading nvm as script to '/root/.nvm'
+
+=> Appending nvm source string to /root/.bashrc
+=> Appending bash_completion source string to /root/.bashrc
+=> Close and reopen your terminal to start using nvm or run the following to use it now:
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+Downloading and installing node v22.22.3...
+Downloading https://nodejs.org/dist/v22.22.3/node-v22.22.3-linux-x64.tar.gz...
+#=#=#                                                                                                                  ... [truncated]
+stderr: None

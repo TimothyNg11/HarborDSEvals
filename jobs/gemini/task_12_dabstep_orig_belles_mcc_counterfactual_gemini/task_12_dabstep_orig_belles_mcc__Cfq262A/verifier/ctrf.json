@@ -1,0 +1,41 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 1,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1779071541.9366755,
+            "stop": 1779071541.9539318
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_file_exists",
+                "status": "passed",
+                "duration": 0.00033118199644377455,
+                "start": 1779071541.9435248,
+                "stop": 1779071541.9444299,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_value_within_tolerance",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.00035338000452611595,
+                "start": 1779071541.94457,
+                "stop": 1779071541.9533226,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "def test_value_within_tolerance():\n        raw = _read().replace(\",\", \"\").replace(\"EUR\", \"\").replace(\"+\", \"\").strip()\n        pred = float(raw)\n        truth = float(GROUND_TRUTH)\n>       assert abs(pred - truth) <= TOL, (\n            f\"Predicted {pred}, expected {truth} +/- {TOL}\"\n        )\nE       AssertionError: Predicted 6408.714623, expected 6177.50062 +/- 1e-05\nE       assert 231.21400300000005 <= 1e-05\nE        +  where 231.21400300000005 = abs((6408.714623 - 6177.50062))\n\n/tests/test_outputs.py:25: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

@@ -1,0 +1,100 @@
+{
+    "id": "85219631-94d5-4e48-98b2-baade147cbde",
+    "task_name": "abundant/dabstep-task-70-is-martinis-fine-steakhouse-in",
+    "trial_name": "task_03_dabstep_70_is-martinis-f__TYuzoNZ",
+    "trial_uri": "file:///C:/Users/timot/HarborDSEvals/jobs/task_03_dabstep_70_is-martinis-fine-steakhouse-in_nop/task_03_dabstep_70_is-martinis-f__TYuzoNZ",
+    "task_id": {
+        "path": "samples\\task_03_dabstep_70_is-martinis-fine-steakhouse-in"
+    },
+    "source": null,
+    "task_checksum": "bb270b170ffefbcb807d5b15118f7e355b728005a8d711c65daf87df296361ec",
+    "config": {
+        "task": {
+            "path": "samples\\task_03_dabstep_70_is-martinis-fine-steakhouse-in",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "task_03_dabstep_70_is-martinis-f__TYuzoNZ",
+        "trials_dir": "jobs\\task_03_dabstep_70_is-martinis-fine-steakhouse-in_nop",
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "nop",
+            "import_path": null,
+            "model_name": null,
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "kwargs": {},
+            "env": {}
+        },
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": false,
+            "delete": true,
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "suppress_override_warnings": false,
+            "mounts": null,
+            "env": {},
+            "kwargs": {}
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "env": {},
+            "disable": false
+        },
+        "artifacts": [],
+        "job_id": "860fc8cb-9947-4060-a8a1-56afb5b292e7"
+    },
+    "agent_info": {
+        "name": "nop",
+        "version": "1.0.0",
+        "model_info": null
+    },
+    "agent_result": {
+        "n_input_tokens": null,
+        "n_cache_tokens": null,
+        "n_output_tokens": null,
+        "cost_usd": null,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 0.0
+        }
+    },
+    "exception_info": null,
+    "started_at": "2026-05-17T23:02:52.415087Z",
+    "finished_at": "2026-05-17T23:03:03.687029Z",
+    "environment_setup": {
+        "started_at": "2026-05-17T23:02:52.530631Z",
+        "finished_at": "2026-05-17T23:02:58.988952Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-05-17T23:02:58.989036Z",
+        "finished_at": "2026-05-17T23:02:58.989146Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-05-17T23:02:58.989236Z",
+        "finished_at": "2026-05-17T23:02:58.989293Z"
+    },
+    "verifier": {
+        "started_at": "2026-05-17T23:02:58.989573Z",
+        "finished_at": "2026-05-17T23:03:01.339510Z"
+    },
+    "step_results": null
+}

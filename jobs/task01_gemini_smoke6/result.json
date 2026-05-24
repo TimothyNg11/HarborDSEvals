@@ -1,0 +1,39 @@
+{
+    "id": "1d065396-216d-416c-8bde-d92c9542f1ca",
+    "started_at": "2026-05-17T04:26:34.569611",
+    "updated_at": "2026-05-17T04:29:03.171400",
+    "finished_at": "2026-05-17T04:29:03.171400",
+    "n_total_trials": 1,
+    "stats": {
+        "n_completed_trials": 1,
+        "n_errored_trials": 0,
+        "n_running_trials": 0,
+        "n_pending_trials": 0,
+        "n_cancelled_trials": 0,
+        "n_retries": 0,
+        "evals": {
+            "gemini-cli__gemini-3-flash-preview__adhoc": {
+                "n_trials": 1,
+                "n_errors": 0,
+                "metrics": [
+                    {
+                        "mean": 1.0
+                    }
+                ],
+                "pass_at_k": {},
+                "reward_stats": {
+                    "reward": {
+                        "1.0": [
+                            "task_01_nhanes_obesity_prevalenc__b642EBx"
+                        ]
+                    }
+                },
+                "exception_stats": {}
+            }
+        },
+        "n_input_tokens": 472080,
+        "n_cache_tokens": 355856,
+        "n_output_tokens": 11195,
+        "cost_usd": 0.1094898
+    }
+}

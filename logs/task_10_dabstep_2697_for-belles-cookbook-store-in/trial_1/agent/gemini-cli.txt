@@ -1,0 +1,56 @@
+Warning: 256-color support not detected. Using a terminal with at least 256-color support is recommended for a better visual experience.
+YOLO mode is enabled. All tool calls will be automatically approved.
+YOLO mode is enabled. All tool calls will be automatically approved.
+Ripgrep is not available. Falling back to GrepTool.
+[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
+[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 130: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 27: pgrep: command not found
+pgrep: /usr/bin/bash: line 96: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 42: pgrep: command not found
+pgrep: /usr/bin/bash: line 63: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 50: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 94: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 40: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+pgrep: /usr/bin/bash: line 4: pgrep: command not found
+B:71.58

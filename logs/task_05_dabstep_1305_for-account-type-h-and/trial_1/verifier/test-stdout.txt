@@ -1,0 +1,36 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 2 items
+
+../tests/test_outputs.py .F                                              [100%]
+
+=================================== FAILURES ===================================
+_____________________________ test_answer_matches ______________________________
+
+    def test_answer_matches():
+        pred = _read_output()
+        if ANSWER_MODE == "number":
+            try:
+                pred_num = float(pred.replace(",", "").replace("EUR", "").strip())
+                truth_num = float(str(GROUND_TRUTH).replace(",", "").strip())
+            except ValueError as e:
+                raise AssertionError(
+                    f"Expected a numeric answer; got {pred!r}. ({e})"
+                )
+            tol = NUM_TOL
+            if tol is None:
+                tol = abs(truth_num) * 1e-3 if truth_num else 1e-6
+>           assert abs(pred_num - truth_num) <= tol, (
+                f"Predicted {pred_num}, expected {truth_num} +/- {tol:.6g}"
+E               AssertionError: Predicted 0.167126, expected 0.123217 +/- 5e-06
+E               assert 0.043909000000000004 <= 4.9999999999999996e-06
+E                +  where 0.043909000000000004 = abs((0.167126 - 0.123217))
+
+/tests/test_outputs.py:47: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED ../tests/test_outputs.py::test_file_exists
+FAILED ../tests/test_outputs.py::test_answer_matches - AssertionError: Predic...
+========================= 1 failed, 1 passed in 0.02s ==========================

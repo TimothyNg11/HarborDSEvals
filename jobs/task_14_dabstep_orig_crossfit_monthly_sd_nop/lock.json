@@ -1,0 +1,66 @@
+{
+    "schema_version": 1,
+    "created_at": "2026-05-18T01:55:19.762877Z",
+    "harbor": {
+        "version": "0.7.0",
+        "is_editable": false
+    },
+    "invocation": [
+        "C:\\Users\\timot\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\harbor",
+        "run",
+        "-p",
+        "samples/task_14_dabstep_orig_crossfit_monthly_sd",
+        "-a",
+        "nop",
+        "-o",
+        "jobs",
+        "--job-name",
+        "task_14_dabstep_orig_crossfit_monthly_sd_nop",
+        "-n",
+        "1",
+        "-y",
+        "-q"
+    ],
+    "n_concurrent_trials": 1,
+    "retry": {
+        "max_retries": 0,
+        "exclude_exceptions": [
+            "VerifierOutputParseError",
+            "RewardFileNotFoundError",
+            "AgentTimeoutError",
+            "RewardFileEmptyError",
+            "VerifierTimeoutError"
+        ],
+        "wait_multiplier": 1.0,
+        "min_wait_sec": 1.0,
+        "max_wait_sec": 60.0
+    },
+    "trials": [
+        {
+            "task": {
+                "name": "task_14_dabstep_orig_crossfit_monthly_sd",
+                "type": "local",
+                "digest": "sha256:7c46b677bf47a2e03f32e247d6b8b945d628862bbf48cd0c3c634596ed7ea43b",
+                "path": "samples\\task_14_dabstep_orig_crossfit_monthly_sd"
+            },
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "nop",
+                "kwargs": {},
+                "env": {}
+            },
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "suppress_override_warnings": false,
+                "env": {},
+                "kwargs": {}
+            },
+            "verifier": {
+                "env": {},
+                "disable": false
+            }
+        }
+    ]
+}

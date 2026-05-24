@@ -1,0 +1,48 @@
+schema_version = "1.2"
+
+artifacts = []
+
+[task]
+name = "abundant/nhanes-compound-subgroups"
+description = "Compute severe-obesity prevalence in six sex-by-age cells from NHANES with design-adjusted variance. Requires correct weight selection, exam-component filtering, multi-modal screenshot reading, and listing values in the prescribed order."
+keywords = ["nhanes", "compound-subgroups", "multi-modal", "design-effect"]
+
+[[task.authors]]
+name = "Abundant Research Eval"
+email = "takehome@abundant.ai"
+
+[metadata]
+author_name = "Abundant Research Eval"
+author_email = "takehome@abundant.ai"
+difficulty = "hard"
+category = "data_science"
+tags = ["statistics", "compound-subgroups", "multi-modal"]
+expert_time_estimate_min = 50.0
+junior_time_estimate_min = 150.0
+survey = "NHANES"
+year_cycle = "August 2021 - August 2023"
+ground_truth_source = "NCHS Data Brief No. 508 (severe obesity by sex and age)"
+difficulty_axis = "compound_subgroups+multi_modal"
+expected_failure_modes = ["wrong_severe_threshold", "swapped_sex_codes", "swapped_age_buckets", "list_ordering_error"]
+
+[verifier]
+timeout_sec = 120.0
+
+[verifier.env]
+
+[agent]
+timeout_sec = 1500.0
+
+[environment]
+build_timeout_sec = 600.0
+os = "linux"
+cpus = 2
+memory_mb = 4096
+storage_mb = 8192
+gpus = 0
+allow_internet = true
+mcp_servers = []
+
+[environment.env]
+
+[solution.env]

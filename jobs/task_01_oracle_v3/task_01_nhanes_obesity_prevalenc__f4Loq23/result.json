@@ -1,0 +1,100 @@
+{
+    "id": "c94730af-402b-49db-8f6e-9c1cef112b3f",
+    "task_name": "abundant/nhanes-obesity-prevalence",
+    "trial_name": "task_01_nhanes_obesity_prevalenc__f4Loq23",
+    "trial_uri": "file:///C:/Users/timot/HarborDSEvals/jobs/task_01_oracle_v3/task_01_nhanes_obesity_prevalenc__f4Loq23",
+    "task_id": {
+        "path": "samples\\task_01_nhanes_obesity_prevalence"
+    },
+    "source": null,
+    "task_checksum": "ec7f9ada0b7109b1df5d60456d41004c0d31f3be4f5bd10db5ca842ea568ec68",
+    "config": {
+        "task": {
+            "path": "samples\\task_01_nhanes_obesity_prevalence",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "task_01_nhanes_obesity_prevalenc__f4Loq23",
+        "trials_dir": "jobs\\task_01_oracle_v3",
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "oracle",
+            "import_path": null,
+            "model_name": null,
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "kwargs": {},
+            "env": {}
+        },
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": false,
+            "delete": true,
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "suppress_override_warnings": false,
+            "mounts": null,
+            "env": {},
+            "kwargs": {}
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "env": {},
+            "disable": false
+        },
+        "artifacts": [],
+        "job_id": "1a855ec3-e925-48c3-aa0c-df32e3b633ca"
+    },
+    "agent_info": {
+        "name": "oracle",
+        "version": "1.0.0",
+        "model_info": null
+    },
+    "agent_result": {
+        "n_input_tokens": null,
+        "n_cache_tokens": null,
+        "n_output_tokens": null,
+        "cost_usd": null,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 1.0
+        }
+    },
+    "exception_info": null,
+    "started_at": "2026-05-17T22:09:36.244911Z",
+    "finished_at": "2026-05-17T22:09:50.757728Z",
+    "environment_setup": {
+        "started_at": "2026-05-17T22:09:36.335086Z",
+        "finished_at": "2026-05-17T22:09:42.799120Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-05-17T22:09:42.799201Z",
+        "finished_at": "2026-05-17T22:09:42.799283Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-05-17T22:09:42.799354Z",
+        "finished_at": "2026-05-17T22:09:46.130567Z"
+    },
+    "verifier": {
+        "started_at": "2026-05-17T22:09:46.130840Z",
+        "finished_at": "2026-05-17T22:09:48.326478Z"
+    },
+    "step_results": null
+}

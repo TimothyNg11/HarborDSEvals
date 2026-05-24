@@ -1,0 +1,7 @@
+pandas>=2.0
+numpy>=1.25
+matplotlib>=3.7
+pytest>=7.4
+pytest-json-ctrf>=0.0.1
+datasets>=2.18
+anthropic>=0.40
