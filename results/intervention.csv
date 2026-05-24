@@ -1,0 +1,13 @@
+task_id,model,baseline_pa3,intervention_pa3,delta_pp
+T05,gemini-3-flash,0.0,0.0,+0.0
+T05,haiku-4-5,0.0,0.0,+0.0
+T06,gemini-3-flash,0.0,0.0,+0.0
+T06,haiku-4-5,1.0,1.0,+0.0
+T07,gemini-3-flash,1.0,1.0,+0.0
+T07,haiku-4-5,1.0,0.0,-100.0
+T08,gemini-3-flash,1.0,1.0,+0.0
+T08,haiku-4-5,1.0,1.0,+0.0
+T09,gemini-3-flash,0.0,0.0,+0.0
+T09,haiku-4-5,0.0,0.0,+0.0
+AGGREGATE-gemini-3-flash,gemini-3-flash,0.4000,0.4000,+0.0
+AGGREGATE-haiku-4-5,haiku-4-5,0.6000,0.4000,-20.0
